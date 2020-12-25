@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+
+  <!-- 可选主题列表 -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/buble.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dark.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/pure.css"> -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/dolphin.css"> -->
+
+  <!-- Theme: Defaults -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css"> -->
+
+  <!-- Theme: Defaults -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css"> -->
+
+  <!-- Theme: Simple Dark -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css"> -->
+
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"> -->
+</head>
+
+<body>
+  <!-- 配置导航栏 -->
+  <!-- <nav>
+    <a href="#/">EN</a>
+    <a href="#/zh-cn/">中文</a>
+  </nav> -->
+  <div id="app">
+
+  </div>
+  <script>
+    window.$docsify = {
+      name: '刷题笔记',
+      repo: 'https://github.com/sivanWu0222/AlgoBook/',
+
+      // 网站的logo
+      // logo: 'https://cdn.jsdelivr.net/gh/sivanWu0222/ImageHosting@master/uPic/fd537d5c-1b03-46d8-836c-96073ba1c165_200x200_gaitubao_122x122.png',
+
+      // 开启自定义侧边栏
+      // 加载 _sidebar.md
+      loadSidebar: true,
+
+      //markdown文件配置导航栏
+      // 加载 _navbar.md
+      loadNavbar: true,
+
+      // 默认情况下会抓取文档中所有标题渲染成目录，可配置最大支持渲染的标题层级。
+      maxLevel: 3,
+
+      //切换页面后是否自动跳转到页面顶部。
+      auto2top: true,
+
+      // 文档加载的根路径，可以是二级路径或者是其他域名的路径。
+      // basePath: '',
+
+      // 如果该选项设为 true ，那么链接会使用相对路径。
+      // relativePath: true,
+
+      // 开启封面
+      coverpage: true,
+
+      // 小屏设备下合并导航栏到侧边栏。
+      mergeNavbar: true,
+
+      // 给每一个目录下自定义一个封面
+      coverpage: {
+        '/': '_coverpage.md',
+        '/zh-cn/': 'cover.md'
+      },
+
+      //-----------------------------------配置插件-----------------------------------
+      //字数统计
+      count: {
+        countable: true,
+        fontsize: '0.9em',
+        color: 'rgb(90,90,90)',
+        language: 'chinese'
+      },
+
+      // 搜索
+      search: 'auto', // 默认值
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
+
+  <!-- 复制到剪贴板 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+
+  <!-- 正确解析emoji -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+  <!-- 代码高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+
+
+
+  <!-- 字数统计 -->
+  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+
+
+  <!-- gittalk -->
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+  <script>
+    const gitalk = new Gitalk({
+      clientID: '3c4fdd2d98dfd00a087a',
+      clientSecret: '2ebbedde1d1670af41f14e0c8d8e772ca4e02b44',
+      repo: 'AlgoBook',
+      owner: 'sivanWu0222',
+      admin: ['sivanWu0222'],
+      // facebook-like distraction free mode
+      distractionFreeMode: false
+    })
+  </script>
+
+</body>
+
+</html>
