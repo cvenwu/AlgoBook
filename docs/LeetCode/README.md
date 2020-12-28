@@ -154,8 +154,15 @@ This is the summary of my book.
 |      | [264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/) | 2020-12-09 |      | [264.丑数II](LeetCode/264.丑数II/code.md) |
 |      | [204.计数质数](https://leetcode-cn.com/problems/count-primes/) | 2020-12-09 |      | [204.计数质数](LeetCode/204.计数质数、code.md)                 |
 |      | [228.汇总区间](https://leetcode-cn.com/problems/summary-ranges/) | 2020-12-15 |      | [228.汇总区间](LeetCode/228.汇总区间/code.md)                 |
+|      | [25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/) | 2020-12-28 |      | [25.k个一组翻转链表](LeetCode/25.k个一组翻转链表/code.md)                 |
+|      |  [143.重排链表](https://leetcode-cn.com/problems/reorder-list/) | 2020-12-28 |      | [143.重排链表](LeetCode/143.重排链表/code.md)                |
+|      | [86.分隔链表](https://leetcode-cn.com/problems/partition-list/) | 2020-12-28 |      | [86.分隔链表](LeetCode/86.分隔链表/code.md)                 |
+|      | [61.旋转链表](https://leetcode-cn.com/problems/rotate-list/) | 2020-12-09 |      | [61.旋转链表](LeetCode/61.旋转链表/code.md)                 |
 |      | []() | 2020-12-09 |      | []()                 |
 |      | []() | 2020-12-09 |      | []()                 |
+|      | []() | 2020-12-09 |      | []()                 |
+|      | []() | 2020-12-09 |      | []()                 |
+|      | []() | 2020-12-28 |      | []()                 |
 
 
 
