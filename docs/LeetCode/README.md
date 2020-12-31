@@ -159,7 +159,8 @@ This is the summary of my book.
 |      | [86.分隔链表](https://leetcode-cn.com/problems/partition-list/) | 2020-12-28 |      | [86.分隔链表](LeetCode/86.分隔链表/code.md)                 |
 |      | [61.旋转链表](https://leetcode-cn.com/problems/rotate-list/) | 2020-12-28 |      | [61.旋转链表](LeetCode/61.旋转链表/code.md)                 |
 |      | [147.对链表插入排序](https://leetcode-cn.com/problems/insertion-sort-list/) | 2020-12-29 |      | [147.对链表插入排序](LeetCode/147.对链表插入排序/code.md)                 |
-|      | []() | 2020-12-09 |      | []()                 |
+|      | [1669. 合并两个链表](https://leetcode-cn.com/problems/merge-in-between-linked-lists/)
+ | 2020-12-30 |      | [1669. 合并两个链表](LeetCode/1669.合并两个链表/code.md)                 |
 |      | []() | 2020-12-09 |      | []()                 |
 |      | []() | 2020-12-09 |      | []()                 |
 |      | []() | 2020-12-28 |      | []()                 |

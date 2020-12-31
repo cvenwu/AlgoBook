@@ -119,5 +119,7 @@
 * [25. K 个一组翻转链表](25.k个一组翻转链表/code.md)
 * [143. 重排链表](LeetCode/143.重排链表/code.md)
 * [147.对链表插入排序](https://leetcode-cn.com/problems/insertion-sort-list/)
+* [1669. 合并两个链表](https://leetcode-cn.com/problems/merge-in-between-linked-lists/)
 * []()
-* []()
+
+
