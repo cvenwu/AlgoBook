@@ -1,4 +1,4 @@
-# [分隔链表](https://leetcode-cn.com/problems/partition-list/)
+# 86. [分隔链表](https://leetcode-cn.com/problems/partition-list/)
 
 !> 采用类似于快速排序中的划分策略进行划分即可
 

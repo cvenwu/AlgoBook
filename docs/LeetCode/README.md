@@ -117,28 +117,28 @@ This is the summary of my book.
 |      | [1154. 一年中的第几天](https://leetcode-cn.com/problems/day-of-the-year/) | 2020-10-03 |      | [1154.一年中的第几天](LeetCode/1154.一年中的第几天/code.md) |
 |      | [383. 赎金信](https://leetcode-cn.com/problems/ransom-note/) | 2020-10-03 |      | [383. 赎金信](LeetCode/383.赎金信/code.md)                 |
 |      | [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lzzwer-case/) | 2020-10-03 |      | [709. 转换成小写字母](LeetCode/709.转换成小写字母/code.md)                 |
-|      | [48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/) | 2020-10-05 |      | [48. 旋转图像](LeetCode/48. 旋转图像/code.md)                 |
-|      | [15. 三数之和](https://leetcode-cn.com/problems/3sum/) | 2020-10-05 |      | [15. 三数之和](LeetCode/15. 三数之和/code.md)                 |
-|      | [18. 四数之和](https://leetcode-cn.com/problems/4sum/) | 2020-10-02 |      | [18. 四数之和](LeetCode/18. 四数之和/code.md)                 |
-|      | [74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/) | 2020-10-02 |      | [74. 搜索二维矩阵](LeetCode/74. 搜索二维矩阵/code.md)                 |
-|      | [739. 每日温度](https://leetcode-cn.com/problems/daily-temperatures/) | 2020-10-02 |      | [739. 每日温度](LeetCode/739. 每日温度/code.md)                 |
-|      | [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/) | 2020-10-02 |      | [22. 括号生成](LeetCode/22. 括号生成/code.md)                 |
-|      | [303. 区域和检索 - 数组不可变](https://leetcode-cn.com/problems/range-sum-query-immutable/) | 2020-10-02 |      | [303. 区域和检索 - 数组不可变](LeetCode/303. 区域和检索 - 数组不可变/code.md)                 |
-|      | [1265. 逆序打印不可变链表](https://leetcode-cn.com/problems/print-immutable-linked-list-in-reverse/) | 2020-10-02 |      | [1265. 逆序打印不可变链表](LeetCode/1265. 逆序打印不可变链表/code.md)                 |
-|      | [1441. 用栈操作构建数组](https://leetcode-cn.com/problems/build-an-array-with-stack-operations/) | 2020-10-07 |      | [1441. 用栈操作构建数组](LeetCode/1441. 用栈操作构建数组/code.md)                 |
-|      | [1047. 删除字符串中的所有相邻重复项](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/) | 2020-10-07 |      | [1047. 删除字符串中的所有相邻重复项](LeetCode/1047. 删除字符串中的所有相邻重复项/code.md)                 |
-|      | [682. 棒球比赛](https://leetcode-cn.com/problems/baseball-game/) | 2020-10-07 |      | [682. 棒球比赛](LeetCode/682. 棒球比赛/code.md)                 |
-|      | [946. 验证栈序列](https://leetcode-cn.com/problems/validate-stack-sequences/) | 2020-10-07 |      | [946. 验证栈序列](LeetCode/946. 验证栈序列/code.md)                 |
-|      | [150. 逆波兰表达式求值](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/) | 2020-10-07 |      | [150. 逆波兰表达式求值](LeetCode/150. 逆波兰表达式求值/code.md)                 |
-|      | [496. 下一个更大元素 I](https://leetcode-cn.com/problems/next-greater-element-i/) | 2020-10-07 |      | [496. 下一个更大元素 I](LeetCode/496. 下一个更大元素 I/code.md) |
+|      | [48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/) | 2020-10-05 |      | [48. 旋转图像](LeetCode/48.旋转图像/code.md)                 |
+|      | [15. 三数之和](https://leetcode-cn.com/problems/3sum/) | 2020-10-05 |      | [15. 三数之和](LeetCode/15.三数之和/code.md)                 |
+|      | [18. 四数之和](https://leetcode-cn.com/problems/4sum/) | 2020-10-02 |      | [18. 四数之和](LeetCode/18.四数之和/code.md)                 |
+|      | [74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/) | 2020-10-02 |      | [74. 搜索二维矩阵](LeetCode/74.搜索二维矩阵/code.md)                 |
+|      | [739. 每日温度](https://leetcode-cn.com/problems/daily-temperatures/) | 2020-10-02 |      | [739. 每日温度](LeetCode/739.每日温度/code.md)                 |
+|      | [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/) | 2020-10-02 |      | [22. 括号生成](LeetCode/22.括号生成/code.md)                 |
+|      | [303. 区域和检索 - 数组不可变](https://leetcode-cn.com/problems/range-sum-query-immutable/) | 2020-10-02 |      | [303. 区域和检索 - 数组不可变](LeetCode/303.区域和检索-数组不可变/code.md)                 |
+|      | [1265. 逆序打印不可变链表](https://leetcode-cn.com/problems/print-immutable-linked-list-in-reverse/) | 2020-10-02 |      | [1265. 逆序打印不可变链表](LeetCode/1265.逆序打印不可变链表/code.md)                 |
+|      | [1441.用栈操作构建数组](https://leetcode-cn.com/problems/build-an-array-with-stack-operations/) | 2020-10-07 |      | [1441. 用栈操作构建数组](LeetCode/1441.用栈操作构建数组/code.md)                 |
+|      | [1047. 删除字符串中的所有相邻重复项](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/) | 2020-10-07 |      | [1047. 删除字符串中的所有相邻重复项](LeetCode/1047.删除字符串中的所有相邻重复项/code.md)                 |
+|      | [682. 棒球比赛](https://leetcode-cn.com/problems/baseball-game/) | 2020-10-07 |      | [682. 棒球比赛](LeetCode/682.棒球比赛/code.md)                 |
+|      | [946. 验证栈序列](https://leetcode-cn.com/problems/validate-stack-sequences/) | 2020-10-07 |      | [946. 验证栈序列](LeetCode/946.验证栈序列/code.md)                 |
+|      | [150. 逆波兰表达式求值](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/) | 2020-10-07 |      | [150. 逆波兰表达式求值](LeetCode/150.逆波兰表达式求值/code.md)                 |
+|      | [496. 下一个更大元素 I](https://leetcode-cn.com/problems/next-greater-element-i/) | 2020-10-07 |      | [496. 下一个更大元素 I](LeetCode/496.下一个更大元素I/code.md) |
 |      | [152. 乘积最大子数组](https://leetcode-cn.com/problems/maximum-product-subarray/) | 2020-10-09 |      | [15.乘积最大子数组](LeetCode/15.乘积最大子数组/code.md) |
-|      | [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/) | 2020-10-09 |      | [17. 电话号码的字母组合](LeetCode/17. 电话号码的字母组合/code.md) |
-|      | [538. 把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/) | 2020-10-09 |      | [538. 把二叉搜索树转换为累加树](LeetCode/538. 把二叉搜索树转换为累加树/code.md) |
+|      | [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/) | 2020-10-09 |      | [17. 电话号码的字母组合](LeetCode/17.电话号码的字母组合/code.md) |
+|      | [538. 把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/) | 2020-10-09 |      | [538. 把二叉搜索树转换为累加树](LeetCode/538.把二叉搜索树转换为累加树/code.md) |
 |      | [760. 找出变位映射](https://leetcode-cn.com/problems/find-anagram-mappings/) | 2020-10-09 |      | [760.找出变位映射](LeetCode/760.找出变位映射/code.md) |
 |      | [11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/) | 2020-10-10 |      | [11.盛最多水的容器](LeetCode/11.盛最多水的容器/code.md) |
 |      | [560. 和为K的子数组](https://leetcode-cn.com/problems/subarray-sum-equals-k/) | 2020-10-10 |      | [560.和为K的子数组](LeetCode/560.和为K的子数组/code.md) |
 |      | [448. 找到所有数组中消失的数字](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/) | 2020-10-10 |      | [448.找到所有数组中消失的数字](LeetCode/448.找到所有数组中消失的数字/code.md) |
-|      | [215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/) | 2020-10-13 |      | [215. 数组中的第K个最大元素](LeetCode/215. 数组中的第K个最大元素/code.md) |
+|      | [215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/) | 2020-10-13 |      | [215. 数组中的第K个最大元素](LeetCode/215.数组中的第K个最大元素/code.md) |
 |      | [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) | 2020-11-13 |      | [200. 岛屿数量](LeetCode/200.岛屿数量/code.md) |
 |      | [976. 三角形的最大周长](https://leetcode-cn.com/problems/largest-perimeter-triangle/) | 2020-11-28 |      | [976. 三角形的最大周长](LeetCode/976.三角形的最大周长/code.md) |
 |      | [1025. 除数博弈](https://leetcode-cn.com/problems/divisor-game/) | 2020-11-29 |      | [1025.除数博弈](LeetCode/1025.除数博弈/code.md) |
@@ -158,12 +158,28 @@ This is the summary of my book.
 |      |  [143.重排链表](https://leetcode-cn.com/problems/reorder-list/) | 2020-12-28 |      | [143.重排链表](LeetCode/143.重排链表/code.md)                |
 |      | [86.分隔链表](https://leetcode-cn.com/problems/partition-list/) | 2020-12-28 |      | [86.分隔链表](LeetCode/86.分隔链表/code.md)                 |
 |      | [61.旋转链表](https://leetcode-cn.com/problems/rotate-list/) | 2020-12-28 |      | [61.旋转链表](LeetCode/61.旋转链表/code.md)                 |
+|      | [707.设计链表](https://leetcode-cn.com/problems/design-linked-list) | 2020-12-28 |      | [707.设计链表](LeetCode/707.设计链表/code.md)   
+|      | [369.给单链表加一](https://leetcode-cn.com/problems/plus-one-linked-list/) | 2020-12-28 |      | [369.给单链表加一](LeetCode/369.给单链表加一/code.md)                    |
 |      | [147.对链表插入排序](https://leetcode-cn.com/problems/insertion-sort-list/) | 2020-12-29 |      | [147.对链表插入排序](LeetCode/147.对链表插入排序/code.md)                 |
-|      | [1669. 合并两个链表](https://leetcode-cn.com/problems/merge-in-between-linked-lists/)
- | 2020-12-30 |      | [1669. 合并两个链表](LeetCode/1669.合并两个链表/code.md)                 |
-|      | []() | 2020-12-09 |      | []()                 |
-|      | []() | 2020-12-09 |      | []()                 |
-|      | []() | 2020-12-28 |      | []()                 |
+|      | [1669. 合并两个链表](https://leetcode-cn.com/problems/merge-in-between-linked-lists/) | 2020-12-30 |      | [1669. 合并两个链表](LeetCode/1669.合并两个链表/code.md)                |
+|      | [21.合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/) | 2020-12-29 |      | [21.合并两个有序链表](LeetCode/21.合并两个有序链表/code.md)                 |
+|      | [605. 种花问题](https://leetcode-cn.com/problems/can-place-flowers/) | 2021-01-01 |      | [605. 种花问题](LeetCode/605.种花问题/code.md)                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
 
 
 
