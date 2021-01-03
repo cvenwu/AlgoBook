@@ -164,6 +164,8 @@ This is the summary of my book.
 |      | [1669. 合并两个链表](https://leetcode-cn.com/problems/merge-in-between-linked-lists/) | 2020-12-30 |      | [1669. 合并两个链表](LeetCode/1669.合并两个链表/code.md)                |
 |      | [21.合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/) | 2020-12-29 |      | [21.合并两个有序链表](LeetCode/21.合并两个有序链表/code.md)                 |
 |      | [605. 种花问题](https://leetcode-cn.com/problems/can-place-flowers/) | 2021-01-01 |      | [605. 种花问题](LeetCode/605.种花问题/code.md)                 |
+|      | [844.比较含退格的字符串](https://leetcode-cn.com/problems/backspace-string-compare/) | 2021-01-02 |      | [844.比较含退格的字符串](LeetCode/844.比较含退格的字符串/code.md)                 |
+|      | [977.有序数组的平方](https://leetcode-cn.com/problems/squares-of-a-sorted-array/) | 2021-01-03 |      | [977.有序数组的平方](LeetCode/977.有序数组的平方/code.md)                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
@@ -178,39 +180,24 @@ This is the summary of my book.
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-
 
 
 链表中一个很重要的点就是，当删除链表中的某个节点，我们可能会觉得删除头节点或者删除尾节点，此时我们可以通过建立一个哨兵节点来解决这些问题。
-
-
 
 由于编译器的优化，当方法调用出现函数末尾时，没有其它操作要执行，编译器在编译代码时，就不会开辟新的栈空间，而是直接覆盖当前栈执行。根据此思路使用尾递归进行求解，当递归到n==0时，就可得到对应的解。[参考](https://leetcode-cn.com/problems/n-th-tribonacci-number/solution/wei-di-gui-by-creammangopie/)
 
 ![dB8nJD](https://cdn.jsdelivr.net/gh/sivanWu0222/ImageHosting@master/uPic/dB8nJD.png)
 
 
-
-
-
 位运算：两个数异或 其实就是 无进位相加
-
 
 
 二分查找：计算 mid 时需要技巧防止溢出，`mid = left + (right - left) >> 1`
 
 
-
-
-
 目前为止，讲解二分最好的文章，没有之一
 
 [参考](https://www.cnblogs.com/kyoner/p/11080078.html)
-
-
-
 
 
 这个博主里面有一些关于算法，计算机网络以及数据库的文章，自己需要好好看一下[链接]([https://www.cnblogs.com/kyoner/tag/%E7%AE%97%E6%B3%95/](https://www.cnblogs.com/kyoner/tag/算法/))
