@@ -166,8 +166,8 @@ This is the summary of my book.
 |      | [605. 种花问题](https://leetcode-cn.com/problems/can-place-flowers/) | 2021-01-01 |      | [605. 种花问题](LeetCode/605.种花问题/code.md)                 |
 |      | [844.比较含退格的字符串](https://leetcode-cn.com/problems/backspace-string-compare/) | 2021-01-02 |      | [844.比较含退格的字符串](LeetCode/844.比较含退格的字符串/code.md)                 |
 |      | [977.有序数组的平方](https://leetcode-cn.com/problems/squares-of-a-sorted-array/) | 2021-01-03 |      | [977.有序数组的平方](LeetCode/977.有序数组的平方/code.md)                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
+|      | [1365.有多少小于当前数字的数字](https://leetcode-cn.com/problems/how-many-numbers-are-smaller-than-the-current-number/submissions/) | 2021-01-03 |      | [1365.有多少小于当前数字的数字](LeetCode/1365.有多少小于当前数字的数字/code.md)                 |
+|      | [485.最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/) | 2021-01-03 |      | [485.最大连续1的个数](LeetCode/485.最大连续1的个数/code.md)                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
