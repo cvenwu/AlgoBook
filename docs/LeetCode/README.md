@@ -168,12 +168,11 @@ This is the summary of my book.
 |      | [977.有序数组的平方](https://leetcode-cn.com/problems/squares-of-a-sorted-array/) | 2021-01-03 |      | [977.有序数组的平方](LeetCode/977.有序数组的平方/code.md)                 |
 |      | [1365.有多少小于当前数字的数字](https://leetcode-cn.com/problems/how-many-numbers-are-smaller-than-the-current-number/submissions/) | 2021-01-03 |      | [1365.有多少小于当前数字的数字](LeetCode/1365.有多少小于当前数字的数字/code.md)                 |
 |      | [485.最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/) | 2021-01-03 |      | [485.最大连续1的个数](LeetCode/485.最大连续1的个数/code.md)                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
+|      | [509.斐波那契数](https://leetcode-cn.com/problems/fibonacci-number/) | 2021-01-04 |      | [509.斐波那契数](LeetCode/509.斐波那契数/code.md)                 |
+|      | [543.二叉树的直径](https://leetcode-cn.com/problems/diameter-of-binary-tree/) | 2021-01-05 |      | [543.二叉树的直径](LeetCode/543.二叉树的直径/code.md)                 |
+|      | [56.合并区间](https://leetcode-cn.com/problems/merge-intervals/) | 2021-01-05 |      | [56.合并区间](LeetCode/56.合并区间/code.md)                 |
+|      | [1507.转变日期格式](https://leetcode-cn.com/problems/reformat-date/)s | 2021-01-05 |      | [1507.转变日期格式](LeetCode/1507.转变日期格式/code.md)                 |
+|      | [252.会议室](https://leetcode-cn.com/problems/meeting-rooms/) | 2021-01-05 |      | [252.会议室](LeetCode/252.会议室/code.md)                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |

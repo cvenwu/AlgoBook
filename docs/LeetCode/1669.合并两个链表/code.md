@@ -1,16 +1,11 @@
 # [1669. 合并两个链表](https://leetcode-cn.com/problems/merge-in-between-linked-lists/)
 
-
-
-
 ## 方法一
-
 思路：
 	1. 找到l1的a的前一个节点prev以及l1的b的后一个节点next
 	2. 找到l2的尾部的节点tail
 	3. 然后将prev的next指向list2，将tail的尾部指向next
 !> 注意：由于我们可能从第1个节点开始就不要，所以我们需要建立dummyNode
-
 
 ```go
 //执行用时：116 ms, 在所有 Go 提交中击败了97.00%的用户
@@ -49,8 +44,6 @@ func mergeInBetween(list1 *ListNode, a int, b int, list2 *ListNode) *ListNode {
 
 	//直接将两个链表连接起来
 	prev.Next, tail2.Next = list2, next
-
-
 
 	return dummyNode.Next
 }
