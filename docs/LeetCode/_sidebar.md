@@ -15,6 +15,7 @@
 * [46.全排列](LeetCode/46.全排列/code.md)
 * [50.POW](LeetCode/50POW/code.md)
 * [53.最大子序和](LeetCode/53.最大子序和/code.md)
+* [55.跳跃游戏](LeetCode/55.跳跃游戏/code.md)
 * [56.合并区间](LeetCode/56.合并区间/code.md)
 * [58.最后一个单词的长度](LeetCode/58.最后一个单词的长度/code.md)
 * [61. 旋转链表](LeetCode/61.旋转链表/code.md)

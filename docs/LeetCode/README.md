@@ -173,8 +173,8 @@ This is the summary of my book.
 |      | [56.合并区间](https://leetcode-cn.com/problems/merge-intervals/) | 2021-01-05 |      | [56.合并区间](LeetCode/56.合并区间/code.md)                 |
 |      | [1507.转变日期格式](https://leetcode-cn.com/problems/reformat-date/)s | 2021-01-05 |      | [1507.转变日期格式](LeetCode/1507.转变日期格式/code.md)                 |
 |      | [252.会议室](https://leetcode-cn.com/problems/meeting-rooms/) | 2021-01-05 |      | [252.会议室](LeetCode/252.会议室/code.md)                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
+|      | [55.跳跃游戏](https://leetcode-cn.com/problems/jump-game/) | 2021-01-07 |      | [55.跳跃游戏](LeetCode/55.跳跃游戏/code.md)                 |
+|      | []() | 2021-01-0 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
