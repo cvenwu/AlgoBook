@@ -174,9 +174,9 @@ This is the summary of my book.
 |      | [1507.转变日期格式](https://leetcode-cn.com/problems/reformat-date/)s | 2021-01-05 |      | [1507.转变日期格式](LeetCode/1507.转变日期格式/code.md)                 |
 |      | [252.会议室](https://leetcode-cn.com/problems/meeting-rooms/) | 2021-01-05 |      | [252.会议室](LeetCode/252.会议室/code.md)                 |
 |      | [55.跳跃游戏](https://leetcode-cn.com/problems/jump-game/) | 2021-01-07 |      | [55.跳跃游戏](LeetCode/55.跳跃游戏/code.md)                 |
-|      | []() | 2021-01-0 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
+|      | [657.机器人能否返回原点](https://leetcode-cn.com/problems/robot-return-to-origin/) | 2021-01-09 |      | [657.机器人能否返回原点](LeetCode/657.机器人能否返回原点/code.md)                 |
+|      | [1570.两个稀疏向量的点积](https://leetcode-cn.com/problems/dot-product-of-two-sparse-vectors/) | 2021-01-09 |      | [1570.两个稀疏向量的点积](LeetCode/1570.两个稀疏向量的点积/code.md)                 |
+|      | [1512.好数对的数目](https://leetcode-cn.com/problems/number-of-good-pairs/) | 2021-01-09 |      | [1512.好数对的数目](LeetCode/1512.好数对的数目/code.md)                 |
 |      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 
