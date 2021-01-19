@@ -117,3 +117,31 @@ func main() {
 
 ```
 
+
+!> **2021-01-19改进的写法**
+```go
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func oddEvenList(head *ListNode) *ListNode {
+    if head == nil {
+        return nil
+    }
+
+    oddHead, evenHead := head, head.Next
+
+    oddCur, evenCur := oddHead, evenHead
+    for oddCur.Next != nil && evenCur.Next != nil{
+        oddCur.Next, evenCur.Next, oddCur, evenCur = evenCur.Next, evenCur.Next.Next, evenCur.Next, evenCur.Next.Next
+    }
+
+    //奇数节点的下一个指向的是evenHead
+    oddCur.Next = evenHead
+    return oddHead
+}
+```

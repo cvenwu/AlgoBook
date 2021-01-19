@@ -82,3 +82,60 @@ func copyRandomList(head *Node) *Node {
 
 ```
 
+自己过一段时间的另外一种写法：
+```go
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Next *Node
+ *     Random *Node
+ * }
+ */
+
+func copyRandomList(head *Node) *Node {
+    //如果当前节点为空，直接返回
+    if head == nil {
+        return nil
+    }
+    tempHead := copyNodeToNewLinkedList(head)
+
+    return splitLinkedList(tempHead)
+}
+
+//将原链表的节点复制到后面生成一个新链表
+func copyNodeToNewLinkedList(head *Node) *Node {
+    //首先将每个节点后面复制一个同样的节点
+    cur := head
+    for cur != nil {
+        node := &Node{
+            Val: cur.Val,
+            Next: cur.Next,
+        }
+        cur.Next, cur = node, cur.Next
+    }
+
+    //将新复制出来的每个节点的random正确指向
+    cur = head
+    for cur != nil {
+        if cur.Random != nil {
+            cur.Next.Random = cur.Random.Next
+        }
+        cur = cur.Next.Next
+    }
+    return head
+}
+
+
+//将我们自己新复制出来的节点拆分成一个链表并返回头
+func splitLinkedList(head *Node) *Node {
+    cur := head
+    ret := head.Next
+
+    for cur != nil && cur.Next != nil{
+        cur.Next, cur = cur.Next.Next, cur.Next 
+    }
+
+    return ret
+}
+```

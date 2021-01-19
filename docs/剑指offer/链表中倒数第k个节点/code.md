@@ -54,8 +54,6 @@ func getKthFromEnd(head *ListNode, k int) *ListNode {
 
 > 原因：第1个指针与第2个指针的距离为k-1，当第1个指针遍历到尾，第2个指针正好在倒数第k个节点上
 
-
-
 > //执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户
 
 > //内存消耗：2.2 MB, 在所有 Go 提交中击败了 100.00% 的用户
@@ -92,7 +90,31 @@ func getKthFromEnd(head *ListNode, k int) *ListNode {
 }
 ```
 
+自己在`2021-01-18`的另外一种写法：
+```go
+func getKthFromEnd(head *ListNode, k int) *ListNode {
+    //参数非法
+    if k <= 0 || head == nil{
+        return nil
+    }
 
+    fast, slow := head, head
+    
+    //快指针先走k-1步
+    for i := 0; i < k-1; i++ {
+        fast = fast.Next
+    }
+
+
+    //此时快慢一起走，当快指向最后一个节点的时候，慢指向倒数第k个节点
+    for fast.Next != nil {
+        fast, slow = fast.Next, slow.Next
+    }
+
+    return slow
+
+}
+```
 
 
 
