@@ -43,7 +43,10 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 
 	//此时fast指向最后一个节点的下一个
 	//slow指向要删除节点的前一个节点
+	//if slow.Next != nil {
+	//注意：这里不用加判断，因为即使只有1个节点，我们的slow也会指向dummyNode,执行slow.Next.Next不会报错，并且slow不可能走到最后一个节点，因为我们的slow是倒数第n个节点的前一个节点
 	slow.Next = slow.Next.Next
+	//}
 
 	return dummyNode.Next
 }

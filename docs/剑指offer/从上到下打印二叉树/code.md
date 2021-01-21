@@ -65,6 +65,7 @@ func levelOrder(root *TreeNode) []int {
 		if node.Right != nil {
 			queue = append(queue, node.Right)
 		}
+		//注意：一定要记得加上这句话，不然会死循环
 		queue = queue[1:]
 	}
 	return ret

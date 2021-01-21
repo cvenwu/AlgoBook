@@ -139,6 +139,43 @@ func addTwoNumbersCore(l1 *ListNode, l2 *ListNode, carry int) *ListNode {
 
 ```
 
+**2021-01-20 递归的另外一种写法**
+!> **着重在两个注释中的注意**
+```go
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	return addTwoNumbersCore(l1, l2, 0)
+}
+
+func addTwoNumbersCore(l1 *ListNode, l2 *ListNode, carry int) *ListNode {
+    //注意1：如果两个都为空的时候不加这个条件将会执行if l1 == nil{}然后报错
+    if l1 == nil && l2 == nil {
+		//判断一下此时carry是否为0
+		if carry != 0 {
+			return &ListNode{
+				Val:  carry,  //注意2：这里可能两个链表都遍历完成，但是carry不为0
+			}
+		}
+		return nil
+	}
+	if l1 == nil {
+		return &ListNode{
+			Val:  (carry + l2.Val) % 10,
+			Next: addTwoNumbersCore(nil, l2.Next, (carry+l2.Val)/10),
+		}
+	}
+	if l2 == nil {
+		return &ListNode{
+			Val:  (carry + l1.Val) % 10,
+			Next: addTwoNumbersCore(l1.Next, nil, (carry+l1.Val)/10),
+		}
+	}
+
+	return &ListNode{
+		Val:  (carry + l1.Val + l2.Val) % 10,
+		Next: addTwoNumbersCore(l1.Next, l2.Next, (carry+l1.Val+l2.Val)/10),
+	}
+}
+```
 
 
 ## 方法三[推荐]：参照LeetCode上的代码进行改进
@@ -186,7 +223,6 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 			Val: carry,
 		}
 	}
-
 
 	return dummyNode.Next
 }
