@@ -51,3 +51,30 @@ func isValid(s string) bool {
 
 ```
 
+!> **另外一种写法：2021-01-24**
+```go
+func isValid(s string) bool {
+	if len(s)&1 != 0 {
+		return false
+	}
+
+	stack := []byte{}
+	for i := 0; i < len(s); i++ {
+		if s[i] == '(' || s[i] == '[' || s[i] == '{' {
+			stack = append(stack, s[i])
+			continue
+		}
+
+		if len(stack) > 0 && (
+			(stack[len(stack)-1] == '(' && s[i] == ')') ||
+				(stack[len(stack)-1] == '[' && s[i] == ']') ||
+				(stack[len(stack)-1] == '{' && s[i] == '}')) {
+			stack = stack[:len(stack)-1]
+		} else {
+			return false
+		}
+	}
+
+	return len(stack) == 0
+}
+```

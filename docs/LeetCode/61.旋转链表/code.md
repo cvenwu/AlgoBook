@@ -11,8 +11,7 @@
 
 步骤：
 1. 获取链表长度n以及链表的最后一个节点last
-2. 再次遍历链表，找到倒数第k%n个节点node以及上一个节点prev，将链表断开
-3. 然后将last的next指向head，同时返回Node
+2. 再次遍历链表，找到倒数第k%n个节点node以及上一个节点prev(只需要遍历一次链表即可，也就是找到倒数第k%n个节点的前一个节点)，将前一个节点的Next置为空，划分为两部分，然后将后半部分Next指向前一部分，然后返回后半部分的头
 
 
 ```go
@@ -65,3 +64,47 @@ func rotateRight(head *ListNode, k int) *ListNode {
 }
 
 ```
+
+
+!> 对上述方法的改进，只需要走O(n + 倒数第k%n个几点的前一个节点所对应的位置) 2021-01-24
+```go
+
+func rotateRight(head *ListNode, k int) *ListNode {
+	if head == nil || k <= 0 {
+		return head
+	}
+
+	n := 1
+	cur := head
+	for cur.Next != nil {
+		n, cur = n + 1, cur.Next
+	}
+
+	//说明移动之后依然是原链表直接返回即可
+	if k % n == 0 {
+		return head
+	}
+
+	tail := cur
+
+	//找到倒数第k%n个节点，以及前一个节点
+	cur = head
+	for i := 0; i < n - k%n - 1; i++ {
+		cur = cur.Next
+	} //此时cur指向倒数第k%n个节点的前一个节点
+
+	//将前一个节点的下一个节点赋值给ret
+	ret := cur.Next
+
+	//前一个节点的Next置空，同时让第二部分链表的尾部指向头部
+	cur.Next, tail.Next = nil, head
+
+	//返回第二部分链表的头部
+	return ret
+}
+
+```
+
+## 其他方法
+!> 参考别人方法：遍历一次链表到末尾，然后将最尾部的节点Next指向到链表头部，然后找到倒数第K%n个节点的前一个节点，然后将该节点的Next与后面的断开，并返回倒数第k%n个节点
+
