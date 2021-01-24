@@ -41,7 +41,7 @@ func reverListCore(head *ListNode) (*ListNode, *ListNode) {
 }
 ```
 
-## 方法三：对方法二的改进
+## 【推荐】方法三：对方法二的改进
 !> 递归函数的含义就是返回以head为头反转之后的链表的头节点
 
 思路：因为递归之后反转后的链表是当前head的Next指向的节点，所以我们可以直接让head.Next.Next 指向head，让后置空head.Next
