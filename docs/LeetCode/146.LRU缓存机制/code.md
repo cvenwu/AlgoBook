@@ -140,3 +140,103 @@ func (this *LRUCache) Put(key int, value int) {
  */
 ```
 
+
+!> 2021-02-05更新代码如下：
+
+```go
+type LRUCache struct {
+	cap int
+	size int
+	head *DLinkedNode
+	tail *DLinkedNode
+	hmap map[int]*DLinkedNode
+}
+
+type DLinkedNode struct {
+	key, val int
+	prev, next *DLinkedNode
+}
+
+func Constructor(capacity int) LRUCache {
+	l := LRUCache{
+		cap: capacity,
+		size: 0,
+		head: &DLinkedNode{
+		},
+		tail: &DLinkedNode{
+		},
+		hmap: make(map[int]*DLinkedNode),
+	}
+	
+	l.head.prev, l.head.next, l.tail.prev, l.tail.next = l.tail, l.tail, l.head, l.head
+	//l.head.next, l.tail.prev其实用不上，可以不写，等价于下面这句
+	// l.head.prev, l.tail.next = l.tail,  l.head
+	return l
+}
+
+//从双链表中移除节点
+func (this *LRUCache) removeNode (node *DLinkedNode) {
+	node.prev.next, node.next.prev = node.next, node.prev
+}
+ 
+//在头部添加节点
+func (this *LRUCache) addToHead(node *DLinkedNode) {
+	this.head.next, this.head.next.prev, node.prev, node.next = node, node, this.head, this.head.next
+}
+
+func (this *LRUCache) Get(key int) int {
+	//如果存在
+	if node, ok := this.hmap[key]; ok {
+		//提升为最近使用
+		this.moveToHead(node)
+		//返回值
+		return node.val
+	}
+
+	//说明不存在
+	return -1
+}
+
+//将node从其他位置移动到头部,相当于提升为最近使用
+func (this *LRUCache) moveToHead(node *DLinkedNode) {
+	this.removeNode(node)
+	this.addToHead(node)
+} 
+
+
+func (this *LRUCache) Put(key int, value int)  {
+	//首先判断是否存在,如果不存在就新建并添加到头部
+	if node, ok := this.hmap[key]; !ok {
+		node = &DLinkedNode {
+			key: key,
+			val: value,
+		}
+		//加入到map中
+		this.hmap[key]=node
+		//加入到链表中
+		this.addToHead(node)
+		this.size++
+		//如果长度超过了容量，移除最久未使用的
+		if this.size > this.cap {
+			//还得从map中删除
+			delete(this.hmap, this.tail.prev.key)
+			this.removeNode(this.tail.prev)
+			this.size--
+		}
+	} else {
+		//如果存在也可能更新值
+		node.val = value
+		//移动到头部
+		this.moveToHead(node)
+		
+	}
+}
+
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * obj := Constructor(capacity);
+ * param_1 := obj.Get(key);
+ * obj.Put(key,value);
+ */
+```
