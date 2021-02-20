@@ -1,6 +1,6 @@
 # [461. 汉明距离](https://leetcode-cn.com/problems/hamming-distance/)
 
-思路：**异或之后使得不同二进制位上会为1，之后统计异或结果中二进制表达式中1的数目**
+> 思路：**异或之后使得不同二进制位上会为1，之后统计异或结果中二进制表达式中1的数目**，只适用于两个非负数的汉明距离
 
 > 执行用时：4 ms, 在所有 Go 提交中击败了100.00%的用户
 > 		内存消耗：2.1 MB, 在所有 Go 提交中击败了100.00%的用户
@@ -14,6 +14,16 @@ func hammingDistance(x int, y int) int {
 	}
 
 	return count
+}
+```
+
+
+## 方法二：利用库函数
+
+```go
+//方法二：利用库函数
+func hammingDistance(x int, y int) int {
+	return bits.OnesCount(uint(x) ^ uint(y))
 }
 ```
 

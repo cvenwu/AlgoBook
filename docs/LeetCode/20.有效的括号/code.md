@@ -78,3 +78,35 @@ func isValid(s string) bool {
 	return len(stack) == 0
 }
 ```
+
+【推荐】：**另外一种写法：2021-02-20**
+
+```go
+
+func isValid(s string) bool {
+
+	//长度为奇数直接返回false
+	if len(s)&1 != 0 {
+		return false
+	}
+	stack := []byte{}
+	hmap := map[byte]byte{
+		']': '[',
+		'}': '{',
+		')': '(',
+	}
+	for i := 0; i < len(s); i++ {
+		//等于左括号则加入栈中
+		if s[i] == '(' || s[i] == '[' || s[i] == '{' {
+			stack = append(stack, s[i])
+		} else if len(stack) > 0 && hmap[s[i]] == stack[len(stack)-1] {  //todo:这里要注意判断栈不空，因为可能前面几个都是右括号
+			stack = stack[:len(stack)-1]
+		} else {
+			return false
+		}
+
+	}
+
+	return len(stack) == 0
+}
+```
