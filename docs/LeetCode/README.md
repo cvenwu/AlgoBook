@@ -177,7 +177,7 @@ This is the summary of my book.
 |      | [657.机器人能否返回原点](https://leetcode-cn.com/problems/robot-return-to-origin/) | 2021-01-09 |      | [657.机器人能否返回原点](LeetCode/657.机器人能否返回原点/code.md)                 |
 |      | [1570.两个稀疏向量的点积](https://leetcode-cn.com/problems/dot-product-of-two-sparse-vectors/) | 2021-01-09 |      | [1570.两个稀疏向量的点积](LeetCode/1570.两个稀疏向量的点积/code.md)                 |
 |      | [1512.好数对的数目](https://leetcode-cn.com/problems/number-of-good-pairs/) | 2021-01-09 |      | [1512.好数对的数目](LeetCode/1512.好数对的数目/code.md)                 |
-|      | []() | 2021-01-01 |      | []()                 |
+|      | [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | 2021-02-21 |      | [104.二叉树的最大深度](LeetCode/104.二叉树的最大深度/code.md)                 |
 |      | []() | 2021-01-01 |      | []()                 |
 
 

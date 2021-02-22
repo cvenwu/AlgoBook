@@ -77,6 +77,6 @@ func climbStairs(n int) int {
 
 ## 方法四：矩阵快速幂解决
 
-时间复杂度：O(logN)
+> 时间复杂度：O(logN)
 
 **具体请[参考](https://leetcode-cn.com/problems/climbing-stairs/solution/pa-lou-ti-by-leetcode-solution/)**

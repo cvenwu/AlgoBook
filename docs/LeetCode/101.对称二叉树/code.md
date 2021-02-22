@@ -143,3 +143,62 @@ func isSymmetric(root *TreeNode) bool {
 
 ```
 
+**2021-02-20编写的两种方法的代码**
+```go
+package main
+
+/**
+ * @Author: yirufeng
+ * @Date: 2021/2/21 10:08 下午
+ * @Desc:
+ **/
+
+
+//方法一：DFS
+func isSymmetric(root *TreeNode) bool {
+
+	return isSymmetricCore(root, root)
+}
+
+func isSymmetricCore(root1, root2 *TreeNode) bool {
+	if root1 == nil && root2 == nil {
+		return true
+	}
+
+	if root1 == nil || root2 == nil {
+		return false
+	}
+
+	return root1.Val == root2.Val && isSymmetricCore(root1.Left, root2.Right) && isSymmetricCore(root1.Right, root2.Left)
+}
+
+
+//方法二：BFS
+func isSymmetric(root *TreeNode) bool {
+	if root == nil {
+		return true
+	}
+
+	queue := []*TreeNode{root, root}
+	for len(queue) != 0 {
+		u, v := queue[0], queue[1]
+		queue = queue[2:]
+
+		if u == nil && v == nil {
+			continue
+		}
+
+		if u == nil || v == nil {
+			return false
+		}
+
+		if u.Val != v.Val {
+			return false
+		}
+
+		queue = append(queue, u.Left, v.Right, u.Right, v.Left)
+	}
+
+	return true
+}
+```

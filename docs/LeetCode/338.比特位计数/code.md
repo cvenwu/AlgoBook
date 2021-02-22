@@ -36,3 +36,18 @@ func countBits(num int) []int {
 }
 ```
 
+> 2021-02-21更新解法
+
+![k3luLP](https://cdn.jsdelivr.net/gh/sivanWu0222/ImageHosting@master/uPic/k3luLP.png)
+
+```go
+func countBits(num int) []int {
+	ret := make([]int, num+1)
+	for i := 1; i <= num; i++ {
+		ret[i] = ret[i&(i-1)]+1
+	}
+	return ret
+}
+
+```
+
