@@ -81,6 +81,32 @@ func productExceptSelf(nums []int) []int {
 ```
 
 
+**2021-02-23编写的方法二代码：**
+```go
+
+func productExceptSelf(nums []int) []int {
+	ret := make([]int, len(nums))
+	ret[0] = 1
+	//从前往后进行计算
+	//此时ret[i] = nums[0] * ... * nums[i-1]
+	for i := 1; i < len(nums); i++ {
+		ret[i] = ret[i-1] * nums[i-1]
+	}
+
+
+	//之后从后往前进行计算
+	//此时让ret[i] 再乘以 nums[i+1] * ... * nums[len(nums)-1]
+	temp := nums[len(nums)-1]
+	for i := len(nums)-2; i >= 0; i-- {
+		ret[i] *= temp
+		temp *= nums[i]
+	}
+
+	return ret
+}
+```
+
+
 
 ## 总结：
 
