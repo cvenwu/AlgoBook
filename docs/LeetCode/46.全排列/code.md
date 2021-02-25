@@ -1,6 +1,6 @@
 # [46. 全排列](https://leetcode-cn.com/problems/permutations/)
 
-## 方法：回溯
+## 【推荐】方法一：使用一个used数组判断是否访问过
 
 > ```
 > 执行用时：0ms, 在所有 Go 提交中击败了100.00%的用户
@@ -50,3 +50,38 @@ func generatePermutation(nums *[]int, res *[][]int, used *[]bool, cur []int) {
 
 ```
 
+
+## 方法二：不使用used数组而是交换
+
+```go
+func permute(nums []int) [][]int {
+	var ret [][]int
+	backtrack(nums, []int{}, 0, &ret)
+	return ret
+}
+
+func backtrack(nums []int, path []int, depth int, ret *[][]int) {
+	//说明当前已经形成了一个排列
+	if depth == len(nums) {
+		temp := make([]int, len(path))
+		copy(temp, path)
+		*ret = append(*ret, temp)
+		return
+	}
+
+	//此时排列还没有形成
+	for i := depth; i < len(nums); i++ {
+		//交换当前选择的数字与我们当前开始的数字
+		nums[i], nums[depth] = nums[depth], nums[i]
+		//将当前的数字加入路径中
+		path = append(path, nums[depth])
+		//进入下一层递归
+		backtrack(nums, path, depth+1, ret)
+		//从路径中去除选择的数字
+		path = path[:len(path)-1]
+		//交换回去
+		nums[i], nums[depth] = nums[depth], nums[i]
+	}
+}
+
+```

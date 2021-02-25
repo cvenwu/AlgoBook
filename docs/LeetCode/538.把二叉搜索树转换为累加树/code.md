@@ -36,3 +36,28 @@ func postOrderTraverse(root *TreeNode, sum *int) {
 }
 ```
 
+## 方法二：采用函数变量对代码进行改进
+
+```go
+
+//方法二：使用一个函数变量进行改造
+func convertBST(root *TreeNode) *TreeNode {
+	val := 0
+	//只是声明
+	var fu func(root *TreeNode)
+	//对函数变量进行赋值和编写
+	fu = func(root *TreeNode) {
+		if root == nil {
+			return
+		}
+		fu(root.Right)
+		val += root.Val
+		root.Val = val
+		fu(root.Left)
+	}
+	//调用函数变量对应的函数
+	fu(root)
+	return root
+}
+
+```

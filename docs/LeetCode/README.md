@@ -178,6 +178,12 @@ This is the summary of my book.
 |      | [1570.两个稀疏向量的点积](https://leetcode-cn.com/problems/dot-product-of-two-sparse-vectors/) | 2021-01-09 |      | [1570.两个稀疏向量的点积](LeetCode/1570.两个稀疏向量的点积/code.md)                 |
 |      | [1512.好数对的数目](https://leetcode-cn.com/problems/number-of-good-pairs/) | 2021-01-09 |      | [1512.好数对的数目](LeetCode/1512.好数对的数目/code.md)                 |
 |      | [104. 二叉树的最大深度](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/) | 2021-02-21 |      | [104.二叉树的最大深度](LeetCode/104.二叉树的最大深度/code.md)                 |
+|      | [3.无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+ | 2021-02-24 |      | [3.无重复字符的最长子串](LeetCode/3.无重复字符的最长子串/code.md)                 |
+|      | [406.根据身高重建队列](https://leetcode-cn.com/problems/queue-reconstruction-by-height/) | 2021-02-24 |      | [406.根据身高重建队列](LeetCode/406.根据身高重建队列/code.md)                 |
+|      | [96.不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/) | 2021-02-25 |      | [96.不同的二叉搜索树](LeetCode/96.不同的二叉搜索树/code.md)                 |
+|      | []() | 2021-01-01 |      | []()                 |
+|      | []() | 2021-01-01 |      | []()                 |
 |      | []() | 2021-01-01 |      | []()                 |
 
 
