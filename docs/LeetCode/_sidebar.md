@@ -12,6 +12,7 @@
 * [26.删除排序数组中的重复项](LeetCode/26.删除排序数组中的重复项/code.md)
 * [27.移除元素](LeetCode/27.移除元素/code.md)
 * [28.实现strStr](LeetCode/28.实现strStr/code.md)
+* [34.在排序数组中查找元素的第一个和最后一个位置](LeetCode/34.在排序数组中查找元素的第一个和最后一个位置/code.md)    
 * [35.搜索插入位置](LeetCode/35.搜索插入位置/code.md)
 * [46.全排列](LeetCode/46.全排列/code.md)
 * [49.字母异位词分组](LeetCode/49.字母异位词分组/code.md)

@@ -182,9 +182,15 @@ This is the summary of my book.
  | 2021-02-24 |      | [3.无重复字符的最长子串](LeetCode/3.无重复字符的最长子串/code.md)                 |
 |      | [406.根据身高重建队列](https://leetcode-cn.com/problems/queue-reconstruction-by-height/) | 2021-02-24 |      | [406.根据身高重建队列](LeetCode/406.根据身高重建队列/code.md)                 |
 |      | [96.不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/) | 2021-02-25 |      | [96.不同的二叉搜索树](LeetCode/96.不同的二叉搜索树/code.md)                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
-|      | []() | 2021-01-01 |      | []()                 |
+|      | [34.在排序数组中查找元素的第一个和最后一个位置](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | 2021-02-25 |      | [34.在排序数组中查找元素的第一个和最后一个位置](LeetCode/34.在排序数组中查找元素的第一个和最后一个位置/code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
 
 
 链表中一个很重要的点就是，当删除链表中的某个节点，我们可能会觉得删除头节点或者删除尾节点，此时我们可以通过建立一个哨兵节点来解决这些问题。
