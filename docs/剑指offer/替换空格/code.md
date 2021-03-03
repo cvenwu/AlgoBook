@@ -1,1 +1,27 @@
 # 替换空格
+
+## 【推荐】方法一：使用strings.Builder
+!> 注意：与许多支持string类型的语言一样，golang中的string类型也是只读且不可变的。因此，这种拼接字符串的方式会导致大量的string创建、销毁和内存分配。如果你拼接的字符串比较多的话，这显然不是一个好的方法。
+
+```go
+func replaceSpace(s string) string {
+	var ret strings.Builder
+	for i := 0; i < len(s); i++ {
+		if s[i] == ' ' {
+			ret.WriteString("%20")
+		}else {
+			ret.WriteByte(s[i])
+		}
+	}
+	return ret.String()
+}
+```
+
+## 方法二：使用库函数
+
+
+```go
+func replaceSpace(s string) string {
+	return strings.Join(strings.Split(s, " "), "%20")
+}
+```
