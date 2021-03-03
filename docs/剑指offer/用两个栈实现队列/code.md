@@ -112,5 +112,48 @@ func (this *CQueue) DeleteHead() int {
 
 ```
 
+!> **2021-03-03自己写的代码**
+```go
+type CQueue struct {
+	stack1 []int
+	stack2 []int
+}
 
+func Constructor() CQueue {
+	return CQueue{
+		stack1: []int{},
+		stack2: []int{},
+	}
+}
 
+func (this *CQueue) AppendTail(value int)  {
+	//直接加入到栈1
+	this.stack1 = append(this.stack1, value)
+}
+
+func (this *CQueue) DeleteHead() int {
+	//如果栈2里面有就直接删除，否则就将栈1里面所有的内容导入到栈2
+	if len(this.stack2) > 0 {
+		val := this.stack2[len(this.stack2)-1]
+		this.stack2 = this.stack2[:len(this.stack2)-1]
+		return val
+	}
+
+	//将栈1里面的所有内容加入到栈2
+	for len(this.stack1) != 0 {
+		val := this.stack1[len(this.stack1)-1]
+		this.stack2 = append(this.stack2, val)
+		this.stack1 = this.stack1[:len(this.stack1)-1]
+	}
+
+	//然后再从栈2里面移除
+	if len(this.stack2) > 0{
+		val := this.stack2[len(this.stack2)-1]
+		this.stack2 = this.stack2[:len(this.stack2)-1]
+		return val
+	}
+
+	//说明非法操作
+	return -1
+}
+```

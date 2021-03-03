@@ -22,11 +22,23 @@ func mirrorTree(root *TreeNode) *TreeNode {
 
 	//直接换
 	root.Left, root.Right = root.Right, root.Left
-
 	mirrorTree(root.Left)
 	mirrorTree(root.Right)
 	return root
 
+}
+```
+
+
+**对代码进行改进(2021-03-03)：**
+```go
+func mirrorTree(root *TreeNode) *TreeNode {
+	if root == nil {
+		return nil
+	}
+
+	root.Left, root.Right = mirrorTree(root.Right), mirrorTree(root.Left)
+	return root
 }
 ```
 

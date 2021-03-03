@@ -82,3 +82,44 @@ func levelOrder(root *TreeNode) [][]int {
 }
 ```
 
+## 方法三：左神
+
+!> 思路：使用两个变量，一个是当前层的最后一个节点，以及遍历过程中不断动态更新的下一层最后一个节点
+
+```go
+//使用两个变量，表示当前行最后一个以及下一行最后一个
+func levelOrder(root *TreeNode) [][]int {
+	if root == nil {
+		return nil
+	}
+	var ret [][]int
+	last := root
+	var nextLast *TreeNode
+	queue := []*TreeNode{last}
+
+	curLevel := []int{}
+	for len(queue) != 0 {
+		node := queue[0]
+		curLevel = append(curLevel, node.Val)
+		if node.Left != nil {
+			queue = append(queue, node.Left)
+			nextLast = node.Left
+		}
+		if node.Right != nil {
+			queue = append(queue, node.Right)
+			nextLast = node.Right
+		}
+		queue = queue[1:]
+
+		//说明要开始换行
+		if node == last {
+			ret = append(ret, curLevel)
+			curLevel = []int{}
+			last = nextLast
+		}
+	}
+
+	return ret
+}
+```
+

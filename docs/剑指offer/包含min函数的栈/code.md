@@ -127,3 +127,63 @@ func (this *MinStack) Min() int {
 
 ```
 
+
+## 改进：
+!> **2021-03-03代码**
+```go
+
+type MinStack struct {
+	data []int
+	min  []int
+}
+
+/** initialize your data structure here. */
+func Constructor() MinStack {
+	return MinStack{
+		data: []int{},
+		min:  []int{},
+	}
+}
+
+func (this *MinStack) Push(x int) {
+	this.data = append(this.data, x)
+
+	//如果栈顶有元素并且比x小就不加入，否则就加入x
+	if len(this.min) > 0 && this.min[len(this.min)-1] < x {
+		return
+	}
+
+	this.min = append(this.min, x)
+}
+
+func (this *MinStack) Pop() {
+    if len(this.data) == 0 {
+        return
+    }
+	val := this.data[len(this.data)-1]
+	this.data = this.data[:len(this.data)-1]
+
+	//如果最小栈栈顶元素等于val则弹出，否则不弹出
+	if val == this.min[len(this.min)-1] {
+		this.min = this.min[:len(this.min)-1]
+	}
+}
+
+func (this *MinStack) Top() int {
+	return this.data[len(this.data)-1]
+}
+
+func (this *MinStack) Min() int {
+	return this.min[len(this.min)-1]
+}
+
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.Push(x);
+ * obj.Pop();
+ * param_3 := obj.Top();
+ * param_4 := obj.Min();
+ */
+```

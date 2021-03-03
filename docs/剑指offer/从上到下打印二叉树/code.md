@@ -1,7 +1,6 @@
 # 从上到下打印二叉树
 
 
-
 **思路：直接使用BFS 即可**
 
 ## 使用container/list
@@ -40,7 +39,7 @@ func levelOrder(root *TreeNode) []int {
 
 
 
-## 使用slice
+## 【推荐】 使用slice
 
 > *// 执行用时：0 ms, 在所有 Go 提交中击败了100.00% 的用户*
 >

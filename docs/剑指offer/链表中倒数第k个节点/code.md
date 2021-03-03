@@ -116,6 +116,32 @@ func getKthFromEnd(head *ListNode, k int) *ListNode {
 }
 ```
 
+自己在`2021-03-03`的另外一种写法：
+
+```go
+func getKthFromEnd(head *ListNode, k int) *ListNode {
+
+	dummyNode := &ListNode{}
+	dummyNode.Next = head
+	//使用两个保持固定距离的指针
+	fast, slow := dummyNode, dummyNode
+
+	//保持距离为k+1，当最后
+	for i := 0; i < k; i++ {
+		if fast == nil {
+			return nil
+		}
+		fast = fast.Next
+	}
+
+	for fast != nil {
+		fast, slow = fast.Next, slow.Next
+	}
+
+	return slow
+}
+```
+
 
 
 

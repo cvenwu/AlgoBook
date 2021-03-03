@@ -99,8 +99,50 @@ func isBalanced(root *TreeNode) bool {
 }
 ```
 
-
-
 总结：
 
 相比于方法一，方法二采用了后序遍历的方式，只需要遍历一次左右子树，不需要重复遍历。因此效率会比方法一高。方法一采用了自上向下的方式，包含了大量重复计算。
+
+## 【推荐】方法三
+
+**2021-03-03写法**
+```go
+type RetType struct {
+	isBalanced bool
+	depth int
+}
+
+func isBalanced(root *TreeNode) bool {
+	return isBalancedCore(root).isBalanced
+}
+
+func isBalancedCore(root *TreeNode) RetType {
+	if root == nil {
+		return RetType{
+			isBalanced: true,
+			depth: 0,
+		}
+	}
+
+	lRet, rRet := isBalancedCore(root.Left), isBalancedCore(root.Right)
+
+	isBalan := true
+	depth := max(lRet.depth, rRet.depth)
+	//高度差超过1
+	if depth - lRet.depth > 1 || depth - rRet.depth > 1 {
+		isBalan = false
+	}
+	//左右子树高度差小于1并且当前左右子树是平衡的
+	return RetType{
+		isBalanced: lRet.isBalanced && rRet.isBalanced && isBalan,
+		depth: depth+1,
+	}
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+```
