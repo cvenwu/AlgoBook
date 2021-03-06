@@ -14,7 +14,6 @@
 
 ## 方法三【推荐】：时间复杂度为O(N)空间复杂度O(1)
 
-
 ​	步骤：
  	1.  将每个节点复制到后面，同时random指向之前源指针的指向
 	2.  修正每个新添加节点的random指向。注意：最后两个节点处理要特殊
@@ -138,4 +137,63 @@ func splitLinkedList(head *Node) *Node {
 
     return ret
 }
+```
+
+## 【推荐】方法四：方法三的改进
+
+**2021-03-06**
+
+注意：原链表中有的节点的random会指向nil，所以要if判断
+
+```go
+
+func copyRandomList(head *Node) *Node {
+	if head == nil {
+		return nil
+	}
+
+	head = copyLinkedList(head)
+	anotherHead := splitLinkedList(head)
+	return anotherHead
+}
+
+func splitLinkedList(head *Node) *Node {
+	cur := head
+	anotherHead := cur.Next
+
+	for cur != nil && cur.Next != nil {
+		cur.Next, cur = cur.Next.Next, cur.Next
+	}
+	return anotherHead
+}
+
+func copyLinkedList(head *Node) *Node {
+	cur := head
+	for cur != nil {
+		node := &Node{
+			Val: cur.Val,
+			Next: cur.Next,
+		}
+		cur.Next, cur = node, cur.Next
+	}
+
+    cur = head
+    for cur != nil {
+        // fmt.Println(cur.Val)
+        cur = cur.Next
+    }
+
+	//再给random赋值
+	cur = head
+	for cur != nil {
+        if cur.Random != nil {
+            cur.Next.Random = cur.Random.Next
+        }
+        //注意：因为可能有的random会指向nil
+        cur = cur.Next.Next
+	}
+
+	return head
+}
+
 ```
