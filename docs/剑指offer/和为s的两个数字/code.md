@@ -90,3 +90,44 @@ func findContinuousSequence2(target int) [][]int {
 }
 ```
 
+
+
+## 方法三：类似于两数之和，使用map
+
+```go
+//方法一：map
+func twoSum(nums []int, target int) []int {
+
+	hmap := make(map[int]int)
+
+	for i := 0; i < len(nums); i++ {
+		if index, ok := hmap[target-nums[i]]; ok {
+			return []int{nums[index], nums[i]}
+		}
+		hmap[nums[i]] = i
+	}
+
+	return nil
+}
+```
+
+## 【推荐】方法四：使用双指针
+
+!> 因为题目中说了数组是有序的
+
+```go
+//方法二：双指针
+func twoSum(nums []int, target int) []int {
+	l, r := 0, len(nums)-1
+	for l < r{
+		if nums[l] + nums[r] > target {
+			r--
+		} else if nums[l] + nums[r] < target {
+			l++
+		} else {
+			return []int{nums[l], nums[r]}
+		}
+	}
+	return nil
+}
+```

@@ -82,3 +82,62 @@ func maxSubArray(nums []int) int {
 }
 ```
 
+**2021-03-04代码进行精简**
+```go
+func maxSubArray(nums []int) int {
+	if len(nums) <= 0 {
+		return 0
+	}
+
+	dp := make([]int, len(nums))
+	dp[0] = nums[0]
+	ret := dp[0]
+
+	for i :=1; i < len(nums); i++ {
+		dp[i] = max(dp[i-1]+nums[i], nums[i])
+		if ret < dp[i] {
+			ret = dp[i]
+		}
+	}
+
+	return ret
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
+}
+```
+
+
+## 【状态压缩】方法三：dp
+
+```go
+func maxSubArray(nums []int) int {
+	if len(nums) <= 0 {
+		return 0
+	}
+
+	cur := nums[0]
+	ret := cur
+
+	for i :=1; i < len(nums); i++ {
+		cur = max(cur+nums[i], nums[i])
+		ret = max(ret, cur)
+	}
+
+	return ret
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+
+	return b
+}
+```
+

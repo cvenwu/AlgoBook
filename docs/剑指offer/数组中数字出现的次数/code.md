@@ -152,12 +152,12 @@ func singleNumbers(nums []int) []int {
 
 改进：
 
-1.  通过 `x = x & -x*` 找到最右边的二进制位1
+1.  通过 `x = x & -x` 找到最右边的二进制位1
 2. 返回切片的时候 不用直接make， 可以直接使用 return []int{ret1, ret2} 相当于返回一个长度为2的切片 `*return* []int{ret1, ret2}`
 
 
 
-## 进阶-2
+## 【推荐】进阶-2
 
 > //执行用时：20 ms, 在所有 Go 提交中击败了89.35% 的用户
 >         //内存消耗：6 MB, 在所有 Go 提交中击败了 100.00% 的用户
@@ -192,3 +192,27 @@ func singleNumbers(nums []int) []int {
 
 改进：**直接使用切片存储而不需要两个结果变量**
 
+**2021-03-04编写代码**
+```go
+//对上面代码的改进
+func singleNumbers(nums []int) []int {
+	ret := 0
+	//将所有数异或
+	for i := 0; i < len(nums); i++ {
+		ret ^= nums[i]
+	}
+	//取最后一位的二进制为1的那位
+	ret ^= ret & (ret - 1)
+	a,b := 0,0
+
+	//找到划分后的数组中不同的两个数
+	for i := 0; i < len(nums); i++ {
+		if ret & nums[i] != 0 {
+			a ^= nums[i]
+		} else {
+			b ^= nums[i]
+		}
+	}
+	return []int{a, b}
+}
+```

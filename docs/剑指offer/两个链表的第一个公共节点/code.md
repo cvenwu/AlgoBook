@@ -47,12 +47,7 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 ```
 
 
-
-
-
 ## 方法二：
-
-
 
 > 思路：遍历两个链表分别获取其长度，然后其中长的链表先走长度差的步数
 
@@ -106,3 +101,26 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 }
 ```
 
+## 【推荐】方法三：
+!> 思路：两个链表一起走各自的内容，当自己的内容走完之后，走另外一个链表，不断循环，**循环条件是如果两个有一个不为空就走，因为我们两个链表走完自己都会走另外一个链表，所以每次循环的时候如果不相等就接着走，如果没有交点，一定走了自己的链表和另外一个链表之后，两个指针都一起指向空，所以我们的循环条件是两个有一个不为空就走**
+```go
+func getIntersectionNode(headA, headB *ListNode) *ListNode {
+    pA, pB := headA, headB
+    for pA != nil || pB != nil {
+        if pA == pB {
+            break
+        }
+        if pA != nil {
+            pA = pA.Next
+        } else {
+            pA = headB
+        }
+        if pB != nil {
+            pB = pB.Next
+        } else {
+            pB = headA
+        }
+    }
+    return pA
+}
+```
