@@ -101,6 +101,7 @@
 * [412.FizzBuzz](LeetCode/412.FizzBuzz/code.md)
 * [429.N叉树的层序遍历](LeetCode/429.N叉树的层序遍历/code.md)
 * [434.字符串中的单词数](LeetCode/434.字符串中的单词数/code.md)
+* [460.LFU缓存设计](LeetCode/460.LFU缓存设计/code.md)
 * [461.汉明距离](LeetCode/461.汉明距离/code.md)
 * [476.数字的补数](LeetCode/476.数字的补数/code.md)
 * [477.汉明距离总和](LeetCode/477.汉明距离总和/code.md)
