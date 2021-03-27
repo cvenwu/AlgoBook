@@ -112,6 +112,11 @@ func (this *CQueue) DeleteHead() int {
 
 ```
 
+
+## 【推荐】
+
+
+
 !> **2021-03-03自己写的代码**
 ```go
 type CQueue struct {
@@ -156,4 +161,51 @@ func (this *CQueue) DeleteHead() int {
 	//说明非法操作
 	return -1
 }
+```
+
+
+!> **2021-03-27自己写的代码**
+
+```go
+type CQueue struct {
+	inputStack  []int
+	outputStack []int
+}
+
+func Constructor() CQueue {
+	return CQueue{
+		inputStack:  []int{},
+		outputStack: []int{},
+	}
+}
+
+func (this *CQueue) AppendTail(value int) {
+	this.inputStack = append(this.inputStack, value)
+}
+
+func (this *CQueue) DeleteHead() int {
+	//如果输出栈没有元素
+	if len(this.outputStack) == 0 {
+		//将输入栈的所有元素全部加入
+		this.outputStack = append(this.outputStack, this.inputStack...)
+		//输入栈将所有元素弹出
+		this.inputStack = this.inputStack[0:0]
+	}
+
+	//此时如果输出栈有元素就弹出，否则返回-1
+	if len(this.outputStack) != 0 {
+		val := this.outputStack[0]
+		this.outputStack = this.outputStack[1:]
+		return val
+	}
+
+	return -1
+}
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.AppendTail(value);
+ * param_2 := obj.DeleteHead();
+ */
 ```

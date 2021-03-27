@@ -5,7 +5,16 @@
 > 思路：使用栈存储遍历结果，之后再输出栈的结果。
 
 > 衍生：既然想到使用栈，递归也是天然的栈，因此我们可以考虑使用递归
+```go
+//方法一：递归进行调用之后进行反转
+func reversePrint(head *ListNode) []int {
+	if head == nil {
+		return nil
+	}
 
+	return append(reversePrint(head.Next), head.Val)
+}
+```
 
 ## 方法二：
 
@@ -77,3 +86,23 @@ func reversePrint(head *ListNode) []int {
 | 方法二 | o(n)       | o(1)       |
 | 【推荐】方法三 | o(n)       | o(1)       |
 
+## 方法四：遍历完链表之后将我们遍历链表得到的结果进行反转
+
+```go
+//方法二：遍历链表，加入数组，然后反转我们的结果切片
+func reversePrintII(head *ListNode) []int {
+	cur := head
+	ret := []int{}
+
+	for cur != nil {
+		ret, cur = append(ret, cur.Val), cur.Next
+	}
+
+	count := len(ret)
+	for i := 0; i < count>>1; i++ {
+		ret[i], ret[count-1-i] = ret[count-1-i], ret[i]
+	}
+
+	return ret
+}
+```

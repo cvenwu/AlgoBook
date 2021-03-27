@@ -48,7 +48,7 @@ func getKthFromEnd(head *ListNode, k int) *ListNode {
 
 
 
-## 方法三[推荐]：双指针
+## 方法三：双指针
 
 > 思路：使用双指针，保持两个指针的距离为k-1。
 
@@ -142,13 +142,37 @@ func getKthFromEnd(head *ListNode, k int) *ListNode {
 }
 ```
 
-
-
-
-
 方法三相比于方法二，只需要遍历一次链表，**相比于方法一以及其衍生方法并且不需要额外的空间复杂度**
 
 **总结**：对于链表题目，双指针作为一种常用的解题思路有大量的应用，例如快慢指针，维持固定距离的两个指针等思想
 
 **链表无法高效获取长度，无法根据偏移快速访问元素，是链表的两个劣势。然而面试的时候经常碰见诸如获取倒数第k个元素，获取中间位置的元素，判断链表是否存在环，判断环的长度等和长度与位置有关的问题。这些问题都可以通过灵活运用双指针来解决。**
 
+## 【推荐】方法四：
+
+思路：使用双指针，让快指针先走k步，注意走的过程中可能走到nil。之后两个一起走，一直到快指针指向nil，然后返回慢指针
+
+```go
+func getKthFromEnd(head *ListNode, k int) *ListNode {
+
+	//参数非法，直接返回nil
+	if k <= 0 {
+		return nil
+	}
+
+	fast, slow := head, head
+	//fast先走k步
+	for i := 0; i < k; i++ {
+		if fast == nil {  //说明k超出了链表的长度
+			return nil
+		}
+		fast = fast.Next
+	}
+
+	for fast != nil {
+		fast, slow = fast.Next, slow.Next
+	}
+
+	return slow
+}
+```

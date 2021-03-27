@@ -1,7 +1,5 @@
 # 连续子数组的最大和
 
-
-
 ## 方法一：找规律
 
 *思路：剑指offer*
@@ -113,18 +111,19 @@ func max(a, b int) int {
 ```
 
 
-## 【状态压缩】方法三：dp
+## 【推荐】【状态压缩】方法三：dp
+
+> 状态压缩：使用两个变量保存我们的dp结果
+注意：
+1. 一个变量保存的是我们第n-1个元素的连续子数组（包含第n-1个元素）的最大和，
+2. 另外一个变量保存的是我们要返回的结果（每次循环的是否都要动态更新）
 
 ```go
+//使用两个变量：一个表示包含第i-1个元素的连续子数组的最大和，另外一个变量是我们要求的结果是一个动态更新的值s
 func maxSubArray(nums []int) int {
-	if len(nums) <= 0 {
-		return 0
-	}
+	cur, ret := nums[0], nums[0]
 
-	cur := nums[0]
-	ret := cur
-
-	for i :=1; i < len(nums); i++ {
+	for i := 1; i < len(nums); i++ {
 		cur = max(cur+nums[i], nums[i])
 		ret = max(ret, cur)
 	}
@@ -136,7 +135,6 @@ func max(a, b int) int {
 	if a > b {
 		return a
 	}
-
 	return b
 }
 ```

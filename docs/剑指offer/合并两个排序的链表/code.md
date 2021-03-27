@@ -30,3 +30,34 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	return dummyNode.Next
 }
 ```
+
+
+!> 2021-03-27更新代码：
+
+```go
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+
+	dummyNode := &ListNode{}
+	cur := dummyNode
+	cur1, cur2 := l1, l2
+	for cur1 != nil && cur2 != nil {
+		if cur1.Val < cur2.Val {
+			cur.Next, cur1.Next, cur1 = cur1, nil, cur1.Next
+		} else {
+			cur.Next, cur2.Next, cur2 = cur2, nil, cur2.Next
+		}
+
+		cur = cur.Next
+	}
+
+	if cur1 != nil {
+		cur.Next = cur1
+	}
+
+	if cur2 != nil {
+		cur.Next = cur2
+	}
+
+	return dummyNode.Next
+}
+```
