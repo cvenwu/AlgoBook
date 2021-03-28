@@ -1,35 +1,7 @@
 # 二叉树的镜像
 
-
-
-## 方法一：递归
-
+## 【推荐】方法一：递归
 >  思路：每次不断反转当前节点的左右子树，直到当前节点为空
-
-
-
-> *// 执行用时：0 ms, 在所有 Go 提交中击败了 100.00% 的用户*
->
-> *// 内存消耗：2.1 MB, 在所有 Go 提交中击败了 100.00% 的用户*
-
-
-
-```go
-func mirrorTree(root *TreeNode) *TreeNode {
-	if root == nil {
-		return nil
-	}
-
-	//直接换
-	root.Left, root.Right = root.Right, root.Left
-	mirrorTree(root.Left)
-	mirrorTree(root.Right)
-	return root
-
-}
-```
-
-
 **对代码进行改进(2021-03-03)：**
 ```go
 func mirrorTree(root *TreeNode) *TreeNode {
@@ -44,8 +16,6 @@ func mirrorTree(root *TreeNode) *TreeNode {
 
 ## 方法二：采用先序遍历反转
 
-
-
 思路：
 
 1. 采用先序遍历的方式，先弹出队列的队首，然后将当前节点的左右反转
@@ -54,13 +24,9 @@ func mirrorTree(root *TreeNode) *TreeNode {
 
 3. 如果当前节点的右边不为空，则将当前节点的右边加入队列
 
-   
-
 > *// 执行用时：0 ms, 在所有 Go 提交中击败了 100.00% 的用户*
 >
 > *// 内存消耗：2.1 MB, 在所有 Go 提交中击败了 100.00% 的用户*
-
-
 
 ```go
 func mirrorTree(root *TreeNode) *TreeNode {

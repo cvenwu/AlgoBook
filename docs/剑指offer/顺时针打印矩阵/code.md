@@ -7,9 +7,6 @@
 思路：通过左上角，右上角，左下角，右下角4个点不断收缩来确定打印范围
 ![xG2SN1](https://cdn.jsdelivr.net/gh/sivanWu0222/ImageHosting@master/uPic/xG2SN1.png)
 
-
-
-
 ```go
 func spiralOrder(matrix [][]int) []int {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {

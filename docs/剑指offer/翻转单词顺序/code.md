@@ -25,9 +25,7 @@
 
 ```go
 func reverseWords(s string) string {
-
-
-	//提取出句子中的每个单词，会将首尾以及字符串之间所有的空格都去掉
+	//提取出句子中的每个单词，会将首尾以及字符串之间所有的空格(1个或多个)都去掉
 	wordList := strings.Fields(s)
 
 	l, r := 0, len(wordList)-1

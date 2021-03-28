@@ -94,3 +94,49 @@ func max(a, b int) int {
 	return b
 }
 ```
+
+另外一种写法：使用状态压缩之后的dp
+!> **2021-03-27更新**
+```go
+
+func maxValue(grid [][]int) int {
+
+	//如果没有行或者没有列直接返回0
+	if len(grid) == 0 || len(grid[0]) == 0 {
+		return 0
+	}
+
+	//定义一个状态压缩之后的dp数组
+	dp := grid[0]
+
+	//行和列的数量
+	rows, cols := len(grid), len(grid[0])
+
+	//初始化我们第一行遍历结束之后的dp数组
+	for i := 1; i < cols; i++ {
+		dp[i] += dp[i-1]
+	}
+
+	//开始不断更新我们的dp数组
+	for i := 1; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if j == 0 {
+				dp[j] += grid[i][j]
+			} else {
+				dp[j] = max(dp[j-1], dp[j]) + grid[i][j]
+			}
+
+		}
+	}
+
+	//返回我们的结果
+	return dp[len(dp)-1]
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+```

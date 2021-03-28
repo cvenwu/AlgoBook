@@ -50,21 +50,24 @@ func deleteNode(head *ListNode, val int) *ListNode {
 	return head
 }
 ```
+
 ## 【推荐】方法：自己的简单解法
+
 ```go
+//思路：两个指针，一个从链表的头部开始遍历，一个从dummyNode开始遍历。每次如果不等于要删除节点的值，我们两个指针一起移动
 func deleteNode(head *ListNode, val int) *ListNode {
 	dummyNode := &ListNode{}
 	dummyNode.Next = head
-	cur := dummyNode
-
-	for cur.Next != nil {
-		if cur.Next.Val == val {
-			cur.Next = cur.Next.Next
+	prev := dummyNode
+	cur := head
+	for cur != nil {
+		if cur.Val == val {
 			break
 		}
-		cur = cur.Next
+		prev, cur = prev.Next, cur.Next
 	}
-	
+
+	prev.Next = prev.Next.Next
 	return dummyNode.Next
 }
 ```
