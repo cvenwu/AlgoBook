@@ -1,7 +1,5 @@
 # 平衡二叉树
 
-
-
 ## 方法一：递归
 
 1. 获取当前节点左右子树的高度差是否小于等于1且大于等于1
@@ -12,8 +10,6 @@
 > *// 执行用时：8 ms, 在所有 Go 提交中击败了 88.31% 的用户*
 >
 > *// 内存消耗：5.7 MB, 在所有 Go 提交中击败了 100.00% 的用户*
-
-
 
 ```go
 func isBalanced(root *TreeNode) bool {
@@ -48,11 +44,6 @@ func maxDepth(root *TreeNode) int {
 	return rightSubTreeDepth + 1
 }
 ```
-
-
-
-
-
 
 
 ## 方法二：递归
@@ -99,43 +90,36 @@ func isBalanced(root *TreeNode) bool {
 }
 ```
 
-总结：
-
-相比于方法一，方法二采用了后序遍历的方式，只需要遍历一次左右子树，不需要重复遍历。因此效率会比方法一高。方法一采用了自上向下的方式，包含了大量重复计算。
+总结：相比于方法一，方法二采用了后序遍历的方式，只需要遍历一次左右子树，不需要重复遍历。因此效率会比方法一高。方法一采用了自上向下的方式，包含了大量重复计算。
 
 ## 【推荐】方法三
 
-**2021-03-03写法**
+**2021-03-29写法**
 ```go
-type RetType struct {
-	isBalanced bool
-	depth int
-}
-
 func isBalanced(root *TreeNode) bool {
 	return isBalancedCore(root).isBalanced
+}
+
+type RetType struct {
+	isBalanced bool
+	height     int
 }
 
 func isBalancedCore(root *TreeNode) RetType {
 	if root == nil {
 		return RetType{
 			isBalanced: true,
-			depth: 0,
+			height:     0,
 		}
 	}
 
-	lRet, rRet := isBalancedCore(root.Left), isBalancedCore(root.Right)
+	lRet := isBalancedCore(root.Left)
+	rRet := isBalancedCore(root.Right)
 
-	isBalan := true
-	depth := max(lRet.depth, rRet.depth)
-	//高度差超过1
-	if depth - lRet.depth > 1 || depth - rRet.depth > 1 {
-		isBalan = false
-	}
-	//左右子树高度差小于1并且当前左右子树是平衡的
 	return RetType{
-		isBalanced: lRet.isBalanced && rRet.isBalanced && isBalan,
-		depth: depth+1,
+		isBalanced: lRet.isBalanced && rRet.isBalanced &&
+			lRet.height-rRet.height >= -1 && lRet.height-rRet.height <= 1,
+		height: max(lRet.height, rRet.height) + 1,
 	}
 }
 

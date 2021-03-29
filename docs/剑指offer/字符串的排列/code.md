@@ -4,7 +4,6 @@
 
 重点：[参考](https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/solution/custerxue-xi-bi-ji-quan-pai-lie-hui-su-by-custergo/) [参考](https://leetcode-cn.com/problems/permutations-ii/solution/custerxue-xi-bi-ji-ji-shu-by-custergo/)
 
-
 思路：因为当前循环一定是固定当前某一个位置，只不过通过循环将后面的元素交换到这里来，如果交换前发现已经和前面我们固定过的字符(我们存在了map中)重复，我们就直接跳过，
 
 
@@ -50,7 +49,7 @@ func backtrack(content []byte, index int, ret *[]string) {
 		//交换回原来的字符
 		content[i], content[index] = content[index], content[i]
 
-		//走到这里说明，当前i索引上的字符已经固定下来了，因此我们要记录下来
+		//走到这里说明，当前i索引上的字符我们之前遍历过了，所以将其要记录下来，避免后面的重复遍历
 		mymap[content[i]] = true
 	}
 }
