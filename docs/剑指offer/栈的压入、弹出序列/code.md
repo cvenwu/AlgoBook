@@ -97,3 +97,22 @@ func validateStackSequences(pushed []int, popped []int) bool {
 }
 ```
 
+## 【推荐】代码三：
+
+步骤：遍历Pushed数组中的每个元素：
+1. 每次加入元素之后
+2. 不断循环：如果栈顶有元素并且栈顶的元素等于我们指向的弹出的元素就弹出
+```go
+func validateStackSequences(pushed []int, popped []int) bool {
+	stack, i := []int{}, 0
+	for j := 0; j < len(pushed); j++ {
+		stack = append(stack, pushed[j])
+		//如果栈元素个数大于0并且栈顶一直与Popped相等就一直弹出
+		for len(stack) > 0 && stack[len(stack)-1] == popped[i] {
+			stack, i = stack[:len(stack)-1], i+1
+		}
+	}
+
+	return len(stack) == 0
+}
+```

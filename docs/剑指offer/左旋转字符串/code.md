@@ -33,29 +33,6 @@ func Reverse(s *string, start, end int) {
 }
 ```
 
-**2021-03-05改进**
-
-```go
-func reverseLeftWords(s string, n int) string {
-	content := []byte(s)
-	//步骤1：旋转字符串s的前n个字符与剩下的字符
-	reverseWords(content, 0, n-1)
-	reverseWords(content, n, len(content)-1)
-	//步骤2：旋转字符串s
-	reverseWords(content, 0, len(content)-1)
-	//步骤3：返回旋转后的
-	return string(content)
-}
-
-func reverseWords(content []byte, start, end int) {
-	for start < end {
-		content[start], content[end] = content[end], content[start]
-		start, end = start+1, end-1
-	}
-}
-
-```
-
 ## 方法二：使用切片
 
 > *// 执行用时：0 ms, 在所有 Go 提交中击败了 100.00% 的用户*
@@ -69,4 +46,39 @@ func reverseLeftWords(s string, n int) string {
 	return s[n:] + s[:n]
 }
 ```
+
+
+## 【推荐】方法三：
+
+思路：
+1. 首先判断n的合理性
+2. 反转前n个字符，以及剩余的字符
+3. 反转整个字符串
+4. 返回结果
+```go
+func reverseLeftWords(s string, n int) string {
+	if n < 0 || n >= len(s) {
+		return s
+	}
+	content := []byte(s)
+	//反转前n个字符
+	reverseWords(content, 0, n-1)
+	//反转后面的字符
+	reverseWords(content, n, len(content)-1)
+	//将全部字符进行反转
+	reverseWords(content, 0, len(content)-1)
+
+	return string(content)
+}
+
+
+func reverseWords(content []byte, start, end int) {
+	for start < end {
+		content[start], content[end] = content[end], content[start]
+		start++
+		end--
+	}
+}
+```
+
 
