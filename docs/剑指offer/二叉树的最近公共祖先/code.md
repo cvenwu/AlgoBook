@@ -42,11 +42,35 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 		return left
 	}
 
-	//走到这里说明left没找到，直接返回right即可
+	//	
 	//原因：题目说明了两个节点都出现了并且树中所有节点的值都不相同
 	return right
 }
 ```
+
+!> **2021-03-30改进**
+```go
+func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
+	if root == nil || root.Val == p.Val || root.Val == q.Val {
+		return root
+	}
+
+	//这个函数表示两层意思 
+	//第一层意思： p，q的最近公共祖先
+	//第二层意思： p，q出现的那个节点
+	l, r := lowestCommonAncestor(root.Left, p, q), lowestCommonAncestor(root.Right, p, q)
+
+	//如果左侧为空，说明右侧不为空，说明右侧已经找到了最近公共祖先直接返回
+	if l == nil {
+		return r
+	} else if r == nil { //如果右侧为空，说明左侧不为空，说明左侧已经找到了最近公共祖先直接返回
+		return l
+	} else { //左右两侧都不为空，说明一个在左，一个在右，直接返回当前根
+		return root
+	}
+}
+```
+
 
 ### python解法
 
