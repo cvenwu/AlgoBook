@@ -1,6 +1,6 @@
 # 滑动窗口的最大值
 
-思路：使用一个切片模拟窗口以及一个切片保存滑动窗口每次的最大值
+!> 思路：使用一个切片模拟窗口以及一个切片保存滑动窗口每次的最大值
 
 1. 初始时将前滑动窗口大小的元素中的元素按照如下规则加入最大值切片
    1. 若最大值切片没有元素，直接加入
@@ -10,152 +10,42 @@
    2. 加入的元素如果比之前的大，就弹出，直到最大值切片最后一个元素小于等于要加入的元素值
    3. 此时就可以直接加入
 
-
-
-## **自己纸上手写的代码：(提交不通过)**
-
-> *//语法有问题：第2个for循环的里面那个for循环，可能为0，因此就会把索引设为-1，报错*
->
-> *//同时逻辑有点小问题，我们自己初始化了滑动窗口大小的元素，初始化完成之后，没有将初始化后的最大值加入到我们的结果中*
-
+**注意：我们向窗口中加入的是元素的索引，判断的时候记得根据我们对应的索引取值**
 ```go
 func maxSlidingWindow(nums []int, k int) []int {
-	//如果传入的数组大小小于窗口大小，我们需要问面试官如何处理
-	if len(nums) < k {
+	if len(nums) <= 0 {
 		return nil
 	}
 
-	//window用来模拟窗口，ret用来存放结果
-	window, ret, curLength := []int{}, []int{}, 0
-	//处理前k个数(特殊情况)
-	for i := 0; i < k; i++ {
-		//再使用一层循环，因为可能加入的比前面几个元素都大，所以前面的元素全部都要弹出
-		for curLength != 0 && nums[window[curLength - 1]] < nums[i] {
-			window = window[:curLength - 1]
-			curLength -= 1
-		}
-		window = append(window, i)  //注意window加入的元素是下标不是值
-		curLength += 1
-	}
+	ret := make([]int, len(nums)-k+1)
+	var window []int
 
-	for i := k; i < len(nums); i++ {
-		if (i - window[0]) >= k {  //说明左边的元素超过了边界要弹出
+	r := 0
+	count := 0
+
+	//开始不断遍历并移动
+	for r < len(nums) {
+		//如果窗口中有元素，并且第一个元素与当前要加入的元素距离等于k则弹出
+		if len(window) > 0 && r-window[0] == k {
 			window = window[1:]
-			curLength -= 1
 		}
 
-		for curLength < k && nums[window[curLength - 1]] < nums[i] {
-			//弹出窗口最右边的元素，说明加入的比已经在里面的最后一个元素大
-			window = window[:curLength - 1]
-			curLength -= 1
+		//如果窗口中有元素并且窗口中的元素比我们要加入的元素小，那么不断弹出
+		for len(window) > 0 && nums[window[len(window)-1]] <= nums[r] {
+			window = window[:len(window)-1]
 		}
-		window = append(window, i)
-		curLength += 1
-		ret = append(ret, nums[window[0]])
+		//加入当前我们要加入的元素
+		window = append(window, r)
+
+		//也就是初始化完成之后我们就可以让我们的结果切片加入内容了
+		if r >= k-1 {
+			ret[count] = nums[window[0]]
+			count++
+		}
+		r++
 	}
 
 	return ret
 }
+
 ```
-
-
-
-## 对上面版本的代码的错误改正：
-
-> *//提交之后报错：因为传入的数组以及滑动窗口大小可能为0*
->
-> *// 加了`ret = append(ret, nums[window[0]])`，改了`for curLength != 0 && curLength < k && nums[window[curLength - 1]] < nums[i] {`*
-
-```go
-func maxSlidingWindow(nums []int, k int) []int {
-
-	//如果传入的数组大小小于窗口大小，我们需要问面试官如何处理
-	// if len(nums) < k {
-	// 	return nil
-	// }
-
-	//window用来模拟窗口，ret用来存放结果
-	window, ret, curLength := []int{}, []int{}, 0
-	//处理前k个数(特殊情况)
-	for i := 0; i < k; i++ {
-		//再使用一层循环，因为可能加入的比前面几个元素都大，所以前面的元素全部都要弹出
-		for curLength != 0 && nums[window[curLength - 1]] < nums[i] {
-			window = window[:curLength - 1]
-			curLength -= 1
-		}
-		window = append(window, i)  //注意window加入的元素是下标不是值
-		curLength += 1
-	}
-	ret = append(ret, nums[window[0]])
-	for i := k; i < len(nums); i++ {
-		if (i - window[0]) >= k {  //说明左边的元素超过了边界要弹出
-			window = window[1:]
-			curLength -= 1
-		}
-		
-		for curLength != 0 && curLength < k && nums[window[curLength - 1]] < nums[i] {
-			//弹出窗口最右边的元素，说明加入的比已经在里面的最后一个元素大
-			window = window[:curLength - 1]
-			curLength -= 1
-		}
-		window = append(window, i)
-		curLength += 1
-		ret = append(ret, nums[window[0]])
-	}
-
-	return ret
-}
-```
-
-
-
-## 再改正：
-
-> *// 执行用时：20 ms, 在所有 Go 提交中击败了 79.30% 的用户*
->
-> *// 内存消耗：6.3 MB, 在所有 Go 提交中击败了 41.67% 的用户*
-
-```go
-func maxSlidingWindow(nums []int, k int) []int {
-	if len(nums) <= 0 || k <= 0 {
-		return nil
-	}
-
-	//如果传入的数组大小小于窗口大小，我们需要问面试官如何处理
-	// if len(nums) < k {
-	// 	return nil
-	// }
-
-	//window用来模拟窗口，ret用来存放结果
-	window, ret, curLength := []int{}, []int{}, 0
-	//处理前k个数(特殊情况)
-	for i := 0; i < k; i++ {
-		//再使用一层循环，因为可能加入的比前面几个元素都大，所以前面的元素全部都要弹出
-		for curLength != 0 && nums[window[curLength - 1]] < nums[i] {
-			window = window[:curLength - 1]
-			curLength -= 1
-		}
-		window = append(window, i)  //注意window加入的元素是下标不是值
-		curLength += 1
-	}
-	ret = append(ret, nums[window[0]])
-	for i := k; i < len(nums); i++ {
-		if (i - window[0]) >= k {  //说明左边的元素超过了边界要弹出
-			window = window[1:]
-			curLength -= 1
-		}
-		
-		for curLength != 0 && curLength < k && nums[window[curLength - 1]] < nums[i] {
-			//弹出窗口最右边的元素，说明加入的比已经在里面的最后一个元素大
-			window = window[:curLength - 1]
-			curLength -= 1
-		}
-		window = append(window, i)
-		curLength += 1
-		ret = append(ret, nums[window[0]])
-	}
-
-	return ret
-}
-```
-
