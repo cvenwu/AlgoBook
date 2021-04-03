@@ -26,6 +26,7 @@
 * [63.不同路径II](LeetCode/63.不同路径/code.md)
 * [64.最小路径和](LeetCode/64.最小路径和/code.md)
 * [66.加一](LeetCode/66加一/code.md)
+* [78.子集](LeetCode/78.子集/code.md)
 * [79.单词搜索](LeetCode/79.单词搜索/code.md)
 * [83.删除排序链表中的重复元素](LeetCode/83删除排序链表中的重复元素/code.md)
 * [86. 分隔链表](LeetCode/86.分隔链表/code.md)
