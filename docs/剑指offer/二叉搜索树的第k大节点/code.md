@@ -36,9 +36,5 @@ func kthLargest(root *TreeNode, k int) int {
 
     return (*ret)[len(*ret) - k]
 }
-
-func main() {
-	
-}
 ```
 

@@ -54,7 +54,7 @@ func backtrack(visited [][]bool, board [][]byte, word string, rowIndex, colIndex
 }
 ```
 
-## 方法二：dfs改进
+## 【推荐】方法二：dfs改进
 
 改进点：使用一个变量临时存储我们要遍历的字符，如果访问过将该节点的值置换为'/'，之后重新回到该节点将其替换为原来的值
 
@@ -97,7 +97,7 @@ func backtrack(board [][]byte, word string, rowIndex, colIndex, start, row, col 
 		backtrack(board, word, rowIndex-1, colIndex, start+1, row, col) ||
 		backtrack(board, word, rowIndex, colIndex+1, start+1, row, col) ||
 		backtrack(board, word, rowIndex, colIndex-1, start+1, row, col)
-	//走到这里说明这个字符虽然可以走，但是走了这个字符后面没有路径可以到达目的地
+	//走到这里我们将当前字符还原回去，因为后面还可能要用到这个字符
 	board[rowIndex][colIndex] = tmp
 	return haspath
 }
