@@ -116,3 +116,49 @@ func backtrack(board [][]byte, word string, rowIndex, colIndex, start, row, col 
 
 ```
 
+!> **2021-04-09**更新代码
+```go
+package main
+
+/**
+ * @Author: yirufeng
+ * @Date: 2021/4/9 9:58 上午
+ * @Desc:
+ **/
+
+func exist(board [][]byte, word string) bool {
+	if len(board) == 0 || len(board[0]) == 0 || len(word) == 0 {
+		return false
+	}
+
+	rows, cols := len(board), len(board[0])
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if searchWord(board, word, 0, rows, cols, i, j) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func searchWord(board [][]byte, word string, index, rows, cols, i, j int) bool {
+	//一定要放在开头
+	if index == len(word) {
+		return true
+	}
+
+	if i < 0 || i >= rows || j < 0 || j >= cols || word[index] != board[i][j] {
+		return false
+	}
+
+	temp := board[i][j]
+	board[i][j] = '/'
+	ret := searchWord(board, word, index+1, rows, cols, i+1, j) || searchWord(board, word, index+1, rows, cols, i-1, j) ||
+		searchWord(board, word, index+1, rows, cols, i, j+1) || searchWord(board, word, index+1, rows, cols, i, j-1)
+	board[i][j] = temp
+	return ret
+}
+
+
+```

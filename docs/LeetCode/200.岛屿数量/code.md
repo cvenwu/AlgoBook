@@ -1,26 +1,15 @@
-
-
 # [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
-
 ## 方法：
+!> 参考左神的书籍上的思路
 
-参考左神的书籍上的思路
-
-遍历题目给我们的二维数组，
-
-  1. 如果某一个值为1，我们从当前位置开始进行感染，将与该值相连的1全部感染成2
-
+遍历题目给我们的二维数组：
+1. 如果某一个值为1，我们从当前位置开始进行感染，将与该值相连的1全部感染成2
 2. 最后要的岛屿的数量就是我们感染的次数
-
-   最后返回我们感染的次数即可
-
-   
-
-   假设输入的矩阵为M\*N
-   **时间复杂度：O(M\*N)**
+最后返回我们感染的次数即可
+假设输入的矩阵为M\*N
+**时间复杂度：O(M\*N)**
 
 代码如下：
-
 ```go
 
 func infect(matrix [][]byte, i int, j int) {
@@ -38,10 +27,6 @@ func infect(matrix [][]byte, i int, j int) {
 }
 
 func numIslands(grid [][]byte) int {
-	if grid == nil || len(grid) == 0 || len(grid[0]) == 0 {
-		return 0
-	}
-
 	ret := 0
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[0]); j++ {

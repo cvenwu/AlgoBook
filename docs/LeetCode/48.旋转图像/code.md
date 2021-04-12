@@ -13,26 +13,18 @@
 ```go
 
 func rotate(matrix [][]int) {
-
-	if len(matrix) <= 1 || len(matrix) != len(matrix[0]) {
-		return
-	}
-
 	rows := len(matrix)
 
 	//一共有多少个正方形要去反转
-	for i := 0; i < rows>>1; i++ {
+	for i := 0; i < rows>>1+row&1; i++ {
 		//每次反转一个正方形需要去对该正方形反转多少回合
 		//此时该正方形的起始点为(i, i)
-		for j := 0; j < rows-1-i*2; j++ {
+		for j := i; j < row-1-i; j++ {
 			//每回合要反转4个点，依次对应顺时针的4个点
-			matrix[i][i+j], matrix[i+j][rows-1-i], matrix[rows-1-i][rows-1-i-j],
-				matrix[rows-1-i-j][i] = matrix[rows-1-i-j][i], matrix[i][i+j], matrix[i+j][rows-1-i],
-				matrix[rows-1-i][rows-1-i-j]
+			matrix[i][j], matrix[j][row-1-i], matrix[row-1-i][row-1-j], matrix[row-1-j][i] =
+				matrix[row-1-j][i], matrix[i][j], matrix[j][row-1-i], matrix[row-1-i][row-1-j]
 		}
-
 	}
-
 }
 ```
 

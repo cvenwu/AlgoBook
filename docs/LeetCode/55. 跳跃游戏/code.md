@@ -72,30 +72,18 @@ func canJump(nums []int) bool {
 }
 ```
 
-> 自己之前参考官方题解写的代码
+## 【推荐】自己写的题解
 ```go
-//方法三：参考官方题解，最远可以到达距离
-// 执行用时：8 ms, 在所有 Go 提交中击败了89.75%的用户
-// 内存消耗：4 MB, 在所有 Go 提交中击败了68.41%的用户
 func canJump(nums []int) bool {
-
-	maxDis := 0
-	for i := 0; i < len(nums); i++ {
-		if maxDis >= i {
-			maxDis = max(maxDis, i+nums[i])
-			if maxDis >= len(nums)-1 {
-				return true
-			}
+	index := nums[0] //表示当前可以跳到的最大索引
+	//坑点：注意我们的i可能会比我们数组长度大，因为可能会跑到很远，所以我们要避免越界
+	for i := 0; i <= index && i <= len(nums)-1; i++ {
+		//因为我们可以到达i位置，并且i位置可以到达的最远的地方是比我们目前可以到达的最远地方大就更新
+		if i+nums[i] > index {
+			index = i + nums[i]
 		}
 	}
-	return false
+	return index >= len(nums)-1
 }
 
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
 ```

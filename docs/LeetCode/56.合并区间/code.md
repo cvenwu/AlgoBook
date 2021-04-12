@@ -51,7 +51,6 @@ s	ret := [][]int{intervals[0]}
 1. 使用**sort.Slice()**进行排序
 2. 对于每次获取结果中最后一个区间的元素，我们可以**使用一个变量即可替代**。
 
-
 ```go
 //执行用时：8 ms, 在所有 Go 提交中击败了96.74%的用户
 //内存消耗：4.6 MB, 在所有 Go 提交中击败了79.09%的用户
@@ -86,5 +85,58 @@ func merge(intervals [][]int) [][]int {
 	}
 
 	return ret
+}
+```
+
+
+!> 另外一种写法：**2021-04-09更新**
+
+
+```go
+package main
+
+import "sort"
+
+/**
+ * @Author: yirufeng
+ * @Date: 2021/4/9 9:43 上午
+ * @Desc:
+ **/
+
+/*
+1. 按照区间起点和终点进行排序
+2. 如果后面的区间的起点小于前面的终点，那么将上一个加入的区间的终点修改为后面区间的终点与上一个区间的终点的最大值
+3. 如果后面的区间的起点大于前面的终点，直接将上一个区间加入到我们的结果中
+*/
+func merge(intervals [][]int) [][]int {
+	if len(intervals) <= 0 {
+		return nil
+	}
+
+	//按照区间起点进行排序，起点相同的时候按照终点进行排序
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0] || (intervals[i][0] == intervals[j][0] &&
+			intervals[i][1] < intervals[j][1])
+	})
+
+	ret := [][]int{intervals[0]}
+	var curLength int
+	for i := 1; i < len(intervals); i++ {
+		curLength = len(ret)
+		//如果起点大于ret最后一个的终点则直接加入
+		if intervals[i][0] > ret[curLength-1][1] {
+			ret = append(ret, intervals[i])
+		} else {
+			ret[len(ret)-1][1] = max(intervals[i][1], ret[curLength-1][1])
+		}
+	}
+	return ret
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
 }
 ```
