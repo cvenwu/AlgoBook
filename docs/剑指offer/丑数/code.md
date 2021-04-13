@@ -88,3 +88,50 @@ func nthUglyNumber(n int) int {
 }
 ```
 
+## 【推荐】方法三：便于理解的三指针解法
+
+思路：
+1. 创建一个数组用于保存我们已经得到的丑数，数组的第一个元素为1
+2. 创建3个指针(twoIndex, threeIndex, fiveIndex)指向我们的数组最开始位置，同时新建一个变量表示当前我们要找的丑数所在的位置cur
+3. 开始遍历(cur < n)：
+	3.1 如果twoIndex指向的位置不是我们当前要填入的位置并且twoIndex指向的位置对应的元素乘以2比我们当前已经填入的最大的数字小，那么twoIndex不断加一，直到不满足上述两个条件为止
+	3.2 如果threeIndex指向的位置不是我们当前要填入的位置并且threeIndex指向的位置对应的元素乘以3比我们当前已经填入的最大的数字小，那么threeIndex不断加一，直到不满足上述两个条件为止
+	3.3 如果fiveIndex指向的位置不是我们当前要填入的位置并且fiveIndex指向的位置对应的元素乘以5比我们当前已经填入的最大的数字小，那么fiveIndex不断加一，直到不满足上述两个条件为止
+	3.4 此时我们当前位置cur应该要填入的数字就是我们min(twoIndex指向的位置的数 乘以 2，threeIndex指向的位置的数 乘以 3，fiveIndex指向的位置的数 乘以 5)
+4. 最后返回我们数组中的最后一个数即可
+```go
+
+func nthUglyNumber(n int) int {
+	ret := make([]int, n)
+	ret[0] = 1
+	twoIndex, threeIndex, fiveIndex := 0, 0, 0
+	cur := 1
+	for cur < n {
+		for twoIndex < cur && ret[twoIndex]*2 <= ret[cur-1] {
+			twoIndex++
+		}
+		for threeIndex < cur && ret[threeIndex]*3 <= ret[cur-1] {
+			threeIndex++
+		}
+		for fiveIndex < cur && ret[fiveIndex]*5 <= ret[cur-1] {
+			fiveIndex++
+		}
+		//当前指向的位置应该是cur
+		ret[cur] = min(ret[twoIndex]*2, ret[threeIndex]*3, ret[fiveIndex]*5)
+		cur++
+	}
+	return ret[len(ret)-1]
+}
+
+
+func min(a, b, c int) int {
+	ret := a
+	if a > b {
+		ret = b
+	}
+	if ret > c {
+		ret = c
+	}
+	return ret
+}
+```

@@ -33,6 +33,40 @@ func singleNumber(nums []int) int {
 }
 ```
 
+**自己在2021-04-12改进的解法：代码便于理解**
+
+
+```go
+/*
+步骤：
+1. 建立一个长度为32的int类型的数组，数组中的每一位表示k进制的一位上的值
+2. 我们遍历传入的数组：假设当前元素为cur
+	2.1 将当前元素的k进制表示加入到我们创建的数组中
+3. 遍历我们的数组，然后计算每一位的元素对k的余数，并乘以该位表示的进制的数然后加上我们之前的结果
+4. 返回我们的结果
+ */
+func singleNumber(nums []int) int {
+	//转换成k进制
+	ret := make([]int, 32)
+	for i := 0; i < len(nums); i++ {
+		cur, index := nums[i], 0
+		for cur/3 != 0 {
+			ret[31-index], index, cur = ret[31-index]+cur%3, index+1, cur/3
+		}
+		ret[31-index] += cur % 3
+	}
+
+	//遍历ret
+	temp := 1
+	result := 0
+	for i := 0; i < len(ret); i++ {
+		result += (ret[31-i] % 3) * temp
+		temp *= 3
+	}
+	return result
+}
+```
+
 ## 方法二：有限状态自动机+位运算
 
 [参考](*https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/solution/mian-shi-ti-56-ii-shu-zu-zhong-shu-zi-chu-xian-d-4/)
