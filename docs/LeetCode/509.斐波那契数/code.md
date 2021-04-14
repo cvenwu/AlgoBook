@@ -34,21 +34,15 @@ package main
 // 执行用时：0 ms, 在所有 Go 提交中击败了100.00的用户
 // 内存消耗：1.9 MB, 在所有 Go 提交中击败了98.36%的用户
 func fib(n int) int {
-	if n <= 1 {
-		return n
-	}
-
-	prev, prPrev := 0, 1
-	cur := prev + prPrev
-	for i := 0; i < n-2; i++ {
-		prev, prPrev = prPrev, cur
-		cur = prev + prPrev
-	}
-
-	return cur
+    if n <= 1 {
+        return n
+    }
+    prev, cur := 0, 1
+    for i := 2; i <= n; i++ {
+        prev, cur = cur, prev+cur
+    }
+    return cur
 }
-
-
 ```
 
 ## 方法四: 矩阵快速幂
