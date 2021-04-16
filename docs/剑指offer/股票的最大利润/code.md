@@ -13,11 +13,6 @@ func maxProfit(prices []int) int {
 	//这里没必要判断，因为for循环第1个会判断
 	//如果传入进来的价格数组长度为0,zh
 	length := len(prices)
-	// if length <= 0 {
-	// 	return 0
-	// }
-
-
 	//计算最大利润
 	maxProfit := 0
 	//哪天买
@@ -65,7 +60,25 @@ func maxProfit(prices []int) int {
 }
 ```
 
-
+!> **2021-04-16更新题解**
+```go
+func maxProfit(prices []int) int {
+	profit := 0
+	//记录我们股票的最低价格
+	minPrice := math.MaxInt32
+	for i := 0; i < len(prices); i++ {
+		if prices[i] < minPrice {
+			minPrice = prices[i]
+		}
+		//如果利润小于我们的当前卖出与之前买入的最低价就更新
+		if profit < prices[i]-minPrice {
+			profit = prices[i] - minPrice
+		}
+	}
+	//返回我们的利润
+	return profit
+}
+```
 
 总结：**两种方法如上所示，法一时间复杂度为o(n^2)，法二时间复杂度为o(n)**
 

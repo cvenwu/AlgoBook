@@ -76,5 +76,80 @@ func merge(nums []int, l, mid, r int) int {
 }
 ```
 
+## 【推荐】方法二：改进
+!> 思路：**合并两个有序数组的时候我们使用从后往前的方法来合并**，这样便于我们统计逆序对的个数。如果从前往后，我们不知道要统计到哪个为止，甚至我们可能会面临重复统计逆序数的问题。
 
+```go
+/**
+ * @Author: yirufeng
+ * @Date: 2021/4/16 9:24 上午
+ * @Desc: 剑指 Offer 51. 数组中的逆序对
 
+注意点：每次我们合并的时候是从末尾合并到开头，因为从开头合并的时候，会重复计算部分逆序的数，甚至不确定我们加上多少个逆序数，
+			所以从末尾到开头这个方向进行合并将会避免我们的重复逆序数计算
+
+比如：0,93, 36,28  逆序数是3
+
+过程：
+1. 0,93 | 28,36
+2. 0,93 | 28,36 将93放到我们help最后一个数上，同时逆序数个数加上我们的2
+3. 0,93 | 28,36 将36放到我们help
+4. 0,93 | 28,36 将28放到我们help
+5. 0,93 | 28,36 将0放到我们help
+
+但是如果从前往后：
+1. 0,93,101 | 28,36
+2. 0,93,101 | 28,36 将0放到我们help第一个数上
+3. 0,93,101 | 28,36 将28放到我们help上，逆序数加上1
+4. 0,93,101 | 28,36 将36放到我们help上，逆序数加上1还是2呢，此时是无法确定的，并且及时确定下来，那么加到哪个范围呢，36后面如果还有比93更大的数呢？
+5. 0,93,101 | 28,36 将93放到我们help上
+6. 0,93,101 | 28,36 将101放到我们help上
+
+ **/
+
+//思路：合并的时候统计我们的逆序对的个数
+func reversePairs(nums []int) int {
+	count := 0
+	mergeSort(nums, 0, len(nums)-1, &count)
+	return count
+}
+
+func mergeSort(nums []int, l, r int, count *int) {
+	if l < r {
+		mid := l + (r-l)>>1
+		//分开
+		mergeSort(nums, l, mid, count)
+		mergeSort(nums, mid+1, r, count)
+		//合并
+		merge(nums, l, mid, r, count)
+	}
+}
+
+//合并区间[l,mid]与区间[mid+1,r]
+func merge(nums []int, l, mid, r int, count *int) {
+	cur := r - l
+	lCur, rCur := mid, r
+	help := make([]int, r-l+1)
+	for lCur >= l && rCur >= mid+1 {
+		if nums[lCur] > nums[rCur] {
+			help[cur], cur, lCur = nums[lCur], cur-1, lCur-1
+			*count += rCur - mid
+		} else if nums[lCur] < nums[rCur] {
+			help[cur], cur, rCur = nums[rCur], cur-1, rCur-1
+		} else if nums[lCur] == nums[rCur] {
+			help[cur], cur, rCur = nums[rCur], cur-1, rCur-1
+		}
+	}
+
+	for lCur >= l {
+		help[cur], cur, lCur = nums[lCur], cur-1, lCur-1
+	}
+	for rCur >= mid+1 {
+		help[cur], cur, rCur = nums[rCur], cur-1, rCur-1
+	}
+	for i := 0; i < len(help); i++ {
+		nums[l+i] = help[i]
+	}
+}
+
+```
