@@ -66,6 +66,5 @@ func getBitSizeOfNum(n int) int {
 	}
 	return count
 }
-
 ```
 

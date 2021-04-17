@@ -20,35 +20,33 @@
 
 
 ```go
-type myData []string
 
-func (d myData) Len() int {
-	return len(d)
+type MyString []string
+
+func (s MyString) Len() int {
+	return len(s)
 }
 
-func (d myData) Swap(i, j int) {
-	d[i], d[j] = d[j], d[i]
+func (s MyString) Less(i, j int) bool {
+	return s[i] + s[j] < s[j] + s[i]
 }
 
-func (d myData) Less(i, j int) bool {
-	num1, _ := strconv.Atoi(d[i]+d[j])
-	num2, _ :=  strconv.Atoi(d[j]+d[i])
-	return num1 < num2
+func (s MyString) Swap(i, j int) {
+	s[i], s[j] = s[j], s[i]
 }
 
 func minNumber(nums []int) string {
-	numsString := make(myData, len(nums))
-
-	for i := 0; i < len(numsString); i++ {
-		numsString[i] = strconv.Itoa(nums[i])
+	//1. 首先将数组中的所有数字转换为字符串
+	ret := make(MyString, len(nums))
+	for i := 0; i < len(ret); i++ {
+		ret[i] = strconv.Itoa(nums[i])
 	}
-
-	//排序
-	sort.Sort(numsString)
-
-	return strings.Join(numsString, "")
-
+	//2. 然后将所有字符串从小到大进行排序
+	sort.Sort(ret)
+	//3. 对排序后的结果拼接并返回
+	return strings.Join(ret, "")
 }
+
 
 ```
 
