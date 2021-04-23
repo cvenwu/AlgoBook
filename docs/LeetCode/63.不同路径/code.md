@@ -125,3 +125,43 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 
 ```
 
+## 【推荐】方法三：状态压缩
+
+```go
+/**
+ * @Author: yirufeng
+ * @Date: 2021/4/23 8:59 上午
+ * @Desc:
+ **/
+
+func uniquePathsWithObstacles(obstacleGrid [][]int) int {
+	if len(obstacleGrid) == 0 || len(obstacleGrid[0]) == 0 {
+		return 0
+	}
+
+	dp := make([]int, len(obstacleGrid[0]))
+
+	//初始化第一行数据
+	for i := 0; i < len(dp); i++ {
+		//一旦某个位置有一个障碍物后面全部为0
+		if obstacleGrid[0][i] == 1 {
+			break
+		}
+		dp[i] = 1
+	}
+
+	//剩下开始继续遍历
+	for i := 1; i < len(obstacleGrid); i++ {
+		for j := 0; j < len(obstacleGrid[i]); j++ {
+			if obstacleGrid[i][j] == 1 { //如果是障碍物，只能置为0
+				dp[j] = 0
+			} else if j == 0 { //说明此时是第0列且不是障碍物，则只能来源于上一行的第0列
+				continue
+			} else {
+				dp[j] = dp[j-1] + dp[j] //否则说明路径来源于左侧+上侧
+			}
+		}
+	}
+	return dp[len(dp)-1]
+}
+```
