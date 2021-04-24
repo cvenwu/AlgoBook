@@ -183,7 +183,7 @@ This is the summary of my book.
 |      | [34.在排序数组中查找元素的第一个和最后一个位置](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | 2021-02-25 |      | [34.在排序数组中查找元素的第一个和最后一个位置](LeetCode/34.在排序数组中查找元素的第一个和最后一个位置/code.md)                 |
 |      | [460.LFU缓存设计](https://leetcode-cn.com/problems/lfu-cache/) | 2021-03-07 |      | [460.LFU缓存设计](LeetCode/460.LFU缓存设计/code.md)                 |
 |      | [78.子集](https://leetcode-cn.com/problems/subsets/) | 2021-04-03 |      | [78.子集](LeetCode/78.子集/code.md)                 |
-|      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
+|      | [47.全排列II](https://leetcode-cn.com/problems/permutations-ii/) | 2021-04-24 |      | [47.全排列II](LeetCode/47.全排列II/code.md)                 |
 |      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
 |      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |
 |      | []() | 2021-02-25 |      | [](LeetCode//code.md)                 |

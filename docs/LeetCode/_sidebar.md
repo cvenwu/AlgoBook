@@ -15,6 +15,7 @@
 * [34.在排序数组中查找元素的第一个和最后一个位置](LeetCode/34.在排序数组中查找元素的第一个和最后一个位置/code.md)    
 * [35.搜索插入位置](LeetCode/35.搜索插入位置/code.md)
 * [46.全排列](LeetCode/46.全排列/code.md)
+* [47.全排列II](LeetCode/47.全排列II/code.md)
 * [49.字母异位词分组](LeetCode/49.字母异位词分组/code.md)
 * [50.POW](LeetCode/50POW/code.md)
 * [53.最大子序和](LeetCode/53.最大子序和/code.md)
