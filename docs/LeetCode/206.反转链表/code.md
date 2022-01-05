@@ -14,6 +14,25 @@ func reverseList(head *ListNode) *ListNode {
 }
 ```
 
+```c++
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode *cur = head;
+        while(cur != nullptr)
+        {
+            ListNode *temp = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = temp;
+        }
+        return prev;
+    }
+};
+```
+
+
 ## 方法二：递归
 !> 思路：新建一个函数，返回反转后的链表的头和尾
 

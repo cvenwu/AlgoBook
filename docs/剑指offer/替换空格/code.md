@@ -1,3 +1,11 @@
+<!--
+ * @Author: yirufeng
+ * @Date: 2020-07-25 08:10:45
+ * @LastEditTime: 2022-01-05 10:03:13
+ * @LastEditors: yirufeng
+ * @Description: 
+ * @FilePath: /AlgoBook/docs/剑指offer/替换空格/code.md
+-->
 # 替换空格
 
 ## 方法一：使用strings.Builder
@@ -30,8 +38,9 @@ func replaceSpace(s string) string {
 
 1. 首先获得空格的个数
 2. 然后不断开始遍历我们的原始数组并填充我们的结果数组
-```go
 
+
+```go
 func replaceSpace(s string) string {
 	backspaceCount := 0
 	//扫描一遍字符串，看一下有多少个空格
