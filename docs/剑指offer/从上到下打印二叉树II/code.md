@@ -41,6 +41,63 @@ func levelOrder(root *TreeNode) [][]int {
 }
 ```
 
+!> 优化的技巧就是每次会加入一层元素的时候都要重复定义一个vector，所以我们可以复用一个vector，然后用完加入我们结果中之后再clear
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        if (!root)
+            return {};
+
+        vector<vector<int>> ret;
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        TreeNode *temp;
+        //表示当前层有多少个元素
+        int levelSize;
+        //表示当前层存放的元素
+        vector<int> curLevrlRet;    
+
+        while(!q.empty())
+        {
+            //获取当前队列的大小
+            levelSize = q.size();
+            //表示当前层的结果
+            for (int i = 0; i < levelSize; i++)
+            {
+                //拿到队头
+                temp = q.front();
+                //然后将队头弹出
+                q.pop();
+                //加入队头的左子树
+                if (temp->left)
+                    q.push(temp->left);
+                //加入队头的右子树
+                if (temp->right)
+                    q.push(temp->right);
+                //然后将当前节点加入到我们的当前层	
+                curLevrlRet.push_back(temp->val);
+            }
+            ret.push_back(curLevrlRet);
+            //然后每次加完当前层要记得情况
+            curLevrlRet.clear();
+        }
+
+        return ret;
+    }
+};
+```
+
 ## 方法二：使用两个变量 (剑指offer思路)
 
 **思路：使用两个变量toBePrinted, nextLevel 分别表示当前层剩余的待打印节点的个数以及下一层要打印的个数，当toBePrinted等于0时，说明当前层打印完成，添加当前层的结果到最终的结果中，同时将nextLevel赋值给toBePrinted之后将nextLevel赋值0，开始下一层**
