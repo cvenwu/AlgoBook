@@ -6,11 +6,7 @@
 2. 如果删除的是中间节点或者尾节点，通过遍历找到要删除节点的上一个节点，将指针指向要删除节点的下一个节点
 
 ## 方法一
-> *剑指offer函数参数传入了要删除的节点，因此不用再去遍历一次去确认要删除的节点是否在末尾*
-
-> *// 执行用时：4 ms, 在所有 Go 提交中击败了 75.15% 的用户*
->
-> *// 内存消耗：2.9 MB, 在所有 Go 提交中击败了 100.00% 的用户*
+!> 剑指offer函数参数传入了要删除的节点，因此不用再去遍历一次去确认要删除的节点是否在末尾*
 
 ```go
 func deleteNode(head *ListNode, val int) *ListNode {
@@ -70,4 +66,53 @@ func deleteNode(head *ListNode, val int) *ListNode {
 	prev.Next = prev.Next.Next
 	return dummyNode.Next
 }
+```
+
+```c++
+class Solution {
+public:
+    ListNode* deleteNode(ListNode* head, int val) {
+        //使用一个dummyNode：如果题目中明确了删除的不是链表最后一个节点，直接可以不用建立dummyNode，也就是相当于直接找到上一个节点然后将值替换
+        auto dummyNode = new ListNode();
+        dummyNode->next = head;
+        
+        auto cur = dummyNode;
+        //如果有下一个节点
+        while(cur)
+        {
+            //如果下一个就是要删除的节点
+            if (cur->next && cur->next->val == val)
+                cur->next = cur->next->next;
+            //往下走
+            cur = cur->next;
+        }
+        //此时重新修改头部指向，因为可能头部节点就是要删除的一个
+        return dummyNode->next;
+    }
+};
+```
+
+对上面代码进行简化：
+```c++
+class Solution {
+public:
+    ListNode* deleteNode(ListNode* head, int val) {
+        //使用一个dummyNode：如果题目中明确了删除的不是链表最后一个节点，直接可以不用建立dummyNode，也就是相当于直接找到上一个节点然后将值替换
+        auto dummyNode = new ListNode();
+        dummyNode->next = head;
+        
+        auto cur = dummyNode;
+        //如果有下一个节点
+        while(cur)
+        {
+            //如果下一个就是要删除的节点
+            if (cur->next && cur->next->val == val)
+                cur->next = cur->next->next;
+            //往下走
+            cur = cur->next;
+        }
+        //此时重新修改头部指向，因为可能头部节点就是要删除的一个
+        return dummyNode->next;
+    }
+};
 ```

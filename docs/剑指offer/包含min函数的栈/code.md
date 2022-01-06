@@ -1,19 +1,15 @@
 # 包含min函数的栈
 
-> 根据slice或container/list实现还有push的两种可能一共有4种解法
+!> 根据slice或container/list实现还有push的两种可能一共有4种解法
 
-> 思路：根据加入的当前元素，在push时有如下两种可能
->
-> 1. 当加入的元素大于最小值栈顶元素，最小值栈顶元素不加入，否则加入 。弹出的时候需要将弹出的元素与最小值栈顶元素比较，如果相等，都弹出，否则只弹出数据栈的元素
->
-> 2. 当加入的元素大于最小值栈顶元素，最小值栈顶元素加入当前的最小值栈顶元素。弹出的时候一起弹出
+思路：根据加入的当前元素，在push时有如下两种可能
+1. 当加入的元素大于最小值栈顶元素，最小值栈顶元素不加入，否则加入 。弹出的时候需要将弹出的元素与最小值栈顶元素比较，如果相等，都弹出，否则只弹出数据栈的元素
+2. 当加入的元素大于最小值栈顶元素，最小值栈顶元素加入当前的最小值栈顶元素。弹出的时候一起弹出
 
 ## 方法一：使用container/list
 
-> 思路：当加入的元素大于最小值栈顶元素，最小值栈顶元素加入当前的最小值栈顶元素
+!> 思路：当加入的元素大于最小值栈顶元素，最小值栈顶元素加入当前的最小值栈顶元素
 
-> // 执行用时：20 ms, 在所有 Go 提交中击败了 79.64% 的用户
->        // 内存消耗：7.7 MB, 在所有 Go 提交中击败了 100.00% 的用户
 
 ```go
 type MinStack struct {
@@ -69,65 +65,7 @@ func (this *MinStack) Min() int {
 
 ## 方法二：使用slice
 
-> 思路：当加入的元素大于最小值栈顶元素，最小值栈顶元素不加入，否则加入 。弹出的时候需要将弹出的元素与最小值栈顶元素比较，如果相等，都弹出，否则只弹出数据栈的元素
-
-> *// 执行用时：24 ms, 在所有 Go 提交中击败了 45.81% 的用户*
->
-> *// 内存消耗：8.1 MB, 在所有 Go 提交中击败了 100.00% 的用户*
-
-```go
-type MinStack struct {
-	DataStack, MinValueStack []int
-}
-
-
-/** initialize your data structure here. */
-func Constructor() MinStack {
-	return MinStack{[]int{}, []int{}}
-}
-
-
-func (this *MinStack) Push(x int)  {
-	this.DataStack = append(this.DataStack, x)
-	//如果当前最小值栈为空，直接加入
-	if len(this.MinValueStack) == 0 {
-		this.MinValueStack = append(this.MinValueStack, x)
-		return
-	}
-
-	//如果x大于当前最小栈栈顶元素就不加入
-	if x <= this.MinValueStack[len(this.MinValueStack) - 1] {
-		this.MinValueStack = append(this.MinValueStack, x)
-	}
-}
-
-
-func (this *MinStack) Pop()  {
-	//数据栈的元素个数大于0
-	if len(this.DataStack) > 0 {
-		//并且当数据栈栈顶元素等于最小值栈顶元素就弹出
-		if this.MinValueStack[len(this.MinValueStack) - 1] == this.DataStack[len(this.DataStack) - 1] {
-			this.MinValueStack = this.MinValueStack[:len(this.MinValueStack) - 1]
-		}
-		this.DataStack = this.DataStack[:len(this.DataStack) - 1]
-	}
-}
-
-
-func (this *MinStack) Top() int {
-	return this.DataStack[len(this.DataStack) - 1]
-}
-
-
-func (this *MinStack) Min() int {
-	return this.MinValueStack[len(this.MinValueStack) - 1]
-}
-
-```
-
-
-## 【推荐】
-!> **2021-03-03代码**
+!> 思路：当加入的元素大于最小值栈顶元素，最小值栈顶元素不加入，否则加入 。弹出的时候需要将弹出的元素与最小值栈顶元素比较，如果相等，都弹出，否则只弹出数据栈的元素
 ```go
 
 type MinStack struct {
@@ -184,4 +122,44 @@ func (this *MinStack) Min() int {
  * param_3 := obj.Top();
  * param_4 := obj.Min();
  */
+```
+
+
+```c++
+class MinStack {
+public:
+    //存放数据的栈
+    stack<int> dataStack;
+    //存放最小值的栈
+    stack<int> minStack;
+    /** initialize your data structure here. */
+    MinStack() {
+
+    }
+    
+    void push(int x) {
+        //加入数据到数据栈中
+        this->dataStack.push(x);
+        //如果最小栈没有值或者加入的小于等于最小栈栈顶就加入
+        if (this->minStack.empty() || (x <= this->minStack.top()))
+            this->minStack.push(x);
+    }
+    
+    void pop() {
+        if (this->dataStack.empty()) return;
+
+        int ret = this->dataStack.top();
+        this->dataStack.pop();
+        if (ret == this->minStack.top()) this->minStack.pop();
+    }
+    
+    int top() {
+        return this->dataStack.top();
+    }
+    
+    int min() {
+        //返回最小栈的栈顶
+        return this->minStack.top();
+    }
+};
 ```

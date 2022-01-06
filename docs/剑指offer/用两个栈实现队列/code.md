@@ -1,23 +1,15 @@
 # 用两个栈实现队列
 
-
-
 **思路：**
-
 - 准备1个输入数据的栈，1个输出数据的栈
-
 - 当加入元素的时候直接加入到输入数据栈中
-
 - 当弹出元素的时候，分为如下几种情况，
-
-	1. - 如果输出数据栈不为空，直接弹出
- 	2. - 如果输出数据栈为空，将**输入数据栈所有元素**加入到输出数据栈中，再返回输出数据栈栈顶元素
+    1.  如果输出数据栈不为空，直接弹出
+    2.  如果输出数据栈为空，将**输入数据栈所有元素**加入到输出数据栈
+        1.  如果输出栈不为空，直接弹出并返回栈顶
+        2.  否则返回-1
 
 ## 方法一：使用container/list
-
-> *//执行用时：252 ms, 在所有 Go 提交中击败了 54.16% 的用户*
->
-> *//内存消耗：8.1 MB, 在所有 Go 提交中击败了 100.00% 的用户*
 
 ```go
 type CQueue struct {
@@ -56,115 +48,7 @@ func (this *CQueue) DeleteHead() int {
 
 
 ## 方法二：使用切片
-
-> *//执行用时：256 ms, 在所有 Go 提交中击败了 47.47% 的用户*
->
-> *//内存消耗：8.3 MB, 在所有 Go 提交中击败了 100.00% 的用户*
-
-```go
-
-type CQueue struct {
-	InputSlice []int
-	OutputSlice []int
-}
-
-
-func Constructor() CQueue {
-	return CQueue{
-		make([]int, 0),
-		make([]int, 0),
-	}
-}
-
-
-func (this *CQueue) AppendTail(value int)  {
-	this.InputSlice = append(this.InputSlice, value)
-}
-
-
-func (this *CQueue) DeleteHead() int {
-	//得到InputSlice以及OutputSlice的大小
-	lengthInputSlice, lengthOutputSlice := len(this.InputSlice), len(this.OutputSlice)
-	//如果输出有元素直接输出
-	if lengthOutputSlice > 0 {
-		ele := this.OutputSlice[lengthOutputSlice-1]
-		this.OutputSlice = this.OutputSlice[0:lengthOutputSlice-1]
-		return ele
-	} else {
-		//如果输出没有元素将输入的元素全部加入进去
-		for lengthInputSlice > 0 {
-			this.OutputSlice = append(this.OutputSlice, this.InputSlice[lengthInputSlice-1])
-			this.InputSlice = this.InputSlice[0:lengthInputSlice-1]
-            lengthInputSlice, lengthOutputSlice = lengthInputSlice - 1, lengthOutputSlice + 1
-		}
-	}
-
-	if lengthOutputSlice > 0 {
-		ele := this.OutputSlice[lengthOutputSlice-1]
-		this.OutputSlice = this.OutputSlice[0:lengthOutputSlice-1]
-        lengthOutputSlice = lengthOutputSlice - 1
-		return ele
-	}
-
-	//如果输入也没有元素返回-1
-	return -1
-}
-
-```
-
-
-## 【推荐】
-
-
-
-!> **2021-03-03自己写的代码**
-```go
-type CQueue struct {
-	stack1 []int
-	stack2 []int
-}
-
-func Constructor() CQueue {
-	return CQueue{
-		stack1: []int{},
-		stack2: []int{},
-	}
-}
-
-func (this *CQueue) AppendTail(value int)  {
-	//直接加入到栈1
-	this.stack1 = append(this.stack1, value)
-}
-
-func (this *CQueue) DeleteHead() int {
-	//如果栈2里面有就直接删除，否则就将栈1里面所有的内容导入到栈2
-	if len(this.stack2) > 0 {
-		val := this.stack2[len(this.stack2)-1]
-		this.stack2 = this.stack2[:len(this.stack2)-1]
-		return val
-	}
-
-	//将栈1里面的所有内容加入到栈2
-	for len(this.stack1) != 0 {
-		val := this.stack1[len(this.stack1)-1]
-		this.stack2 = append(this.stack2, val)
-		this.stack1 = this.stack1[:len(this.stack1)-1]
-	}
-
-	//然后再从栈2里面移除
-	if len(this.stack2) > 0{
-		val := this.stack2[len(this.stack2)-1]
-		this.stack2 = this.stack2[:len(this.stack2)-1]
-		return val
-	}
-
-	//说明非法操作
-	return -1
-}
-```
-
-
-!> **2021-03-27自己写的代码**
+!> 注意：题目中有说明，如果队列为空且要弹出元素的时候直接返回-1
 
 ```go
 type CQueue struct {
@@ -207,5 +91,50 @@ func (this *CQueue) DeleteHead() int {
  * obj := Constructor();
  * obj.AppendTail(value);
  * param_2 := obj.DeleteHead();
+ */
+```
+
+```c++
+
+class CQueue {
+public:
+    stack<int> inputStack;
+    stack<int> outputStack;
+    CQueue() {
+
+    }
+    
+    void appendTail(int value) {
+        this->inputStack.push(value);
+    }
+    
+    int deleteHead() {
+        //如果输出栈为空将所有输入栈的元素全部加入到输出栈里面
+        if (this->outputStack.empty())
+        {
+            while(!this->inputStack.empty())
+            {
+                int topEle = this->inputStack.top();
+                this->inputStack.pop();
+                this->outputStack.push(topEle);
+            }
+        }
+
+        //如果从输入栈中加入所有元素之后输出栈依然为空
+        if (this->outputStack.empty())
+            return -1;
+
+         //从输出栈弹出一个栈顶并作为一个结果进行返回
+        int ret = this->outputStack.top();
+        this->outputStack.pop();
+        return ret;
+    }
+};
+
+/**
+ * Your CQueue object will be instantiated and called as such:
+ * CQueue* obj = new CQueue();
+ * obj->appendTail(value);
+ * int param_2 = obj->deleteHead();
  */
 ```
