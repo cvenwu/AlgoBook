@@ -2,7 +2,6 @@
 
 ## 方法一：递归建立左右子二叉树
 
-
 ```go
 type TreeNode struct {
 	Val         int
@@ -40,6 +39,52 @@ func buildTreeCore(preorder []int, inorder []int, pStart, pEnd, inStart, inEnd i
 	}
 }
 
+```
+
+!> C++中必须要传入一个长度来区分先序与中序的长度
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+
+TreeNode* buildTreeCore(vector<int>& preorder, vector<int>& inorder, int pLeft, int pRight, int inLeft, int inRight)
+{
+    if (pLeft > pRight || inLeft > inRight) return NULL;
+
+    //首先找到根节点的值
+    int rootVal = preorder[pLeft];
+    //记录根节点的序号
+    int rootIndex;
+    //确定根节点在中序遍历中出现的位置
+    for (rootIndex = inLeft; rootIndex <= inRight; rootIndex++ )
+    {
+        if (rootVal == inorder[rootIndex])
+            break;
+    }
+
+    //左子树的长度
+    int leftSubTreeLength = rootIndex-inLeft;
+
+    //然后区分左右子树的序号，开始重建二叉树
+    auto root = new TreeNode(rootVal);
+    root->left = buildTreeCore(preorder, inorder, pLeft+1, pLeft+leftSubTreeLength, inLeft, rootIndex-1), root->right = buildTreeCore(preorder, inorder, pLeft+leftSubTreeLength+1, pRight, rootIndex+1, pRight);
+    return root;
+}
+
+class Solution {
+public:
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        return buildTreeCore(preorder, inorder, 0, preorder.size()-1, 0, inorder.size()-1);
+    }
+};
 ```
 
 ## 【推荐】方法二：直接使用当前函数递归建立
