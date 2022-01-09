@@ -8,8 +8,10 @@
 2. 如果sum < target，那么值小了，我们需要将end右移一个单位，同时sum += end
 3. 如果sum == target，满足条件，我们组成start到end的一个切片，并将其放入结果中。之后因为后面还可能有满足条件的记录，因此我们将big++，不断重复如上步骤，直到small <= (target + 1) / 2
 
-## 自己错误的解法：
 
+## 剑指offer上的题解
+
+### 错误代码
 ~~错误代码~~ 找到一个就会返回结果
 
 ```go
@@ -47,11 +49,7 @@ func findContinuousSequence(target int) [][]int {
 }
 ```
 
-## 自己参照剑指offer思路写的代码
-
-> *// 执行用时：0 ms, 在所有 Go 提交中击败了 100.00% 的用户*
->
-> *// 内存消耗：2.2 MB, 在所有 Go 提交中击败了 100.00% 的用户*
+### 自己参照剑指offer思路写的代码
 
 ```go
 //参照剑指offer思路代码写的
@@ -89,8 +87,8 @@ func findContinuousSequence2(target int) [][]int {
 ```
 
 
-
-## 方法三：类似于两数之和，使用map
+## LeetCode上的题解
+### 方法三：类似于两数之和，使用map
 
 ```go
 //方法一：map
@@ -109,7 +107,9 @@ func twoSum(nums []int, target int) []int {
 }
 ```
 
-## 【推荐】方法四：使用双指针
+### 【推荐】方法四：使用双指针
+
+!> 题目参考：https://leetcode-cn.com/problems/he-wei-sde-liang-ge-shu-zi-lcof/
 
 !> 因为题目中说了数组是有序的
 
@@ -128,4 +128,24 @@ func twoSum(nums []int, target int) []int {
 	}
 	return nil
 }
+```
+
+```c++
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int l = 0, r = nums.size()-1;
+
+        while(l < r)
+        {
+            if (nums[l] + nums[r] == target) 
+                return {nums[l], nums[r]};
+            else if (nums[l] + nums[r] < target)
+                l++;
+            else
+                r--;
+        }
+        return {};
+    }
+};
 ```
