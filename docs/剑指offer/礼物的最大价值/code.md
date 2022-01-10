@@ -3,26 +3,16 @@
 
 ## 方法一：初级DP
 
-> 思路：问题是求最大价值(最值)，同时是遍历一个二维数组，涉及到了大量的重复计算，因而我们可以考虑dp，
->
-> 最入门的dp可以使用二维数组来存储结果
->
-> 这里我们进行状态压缩，使用一维数组来存储结果
+!> 思路：问题是求最大价值(最值)，同时是遍历一个二维数组，涉及到了大量的重复计算，因而我们可以考虑dp，
 
-`dp[i][j]`表示第i, j位置的礼物最大价值
 
-**dp公式如下：**
+状态定义：`dp[i][j]`表示第i, j位置的礼物最大价值
 
-`dp[i][j] = grid[i][j])` 位于第一行第一列，只能赋值
-
-`dp[i][j] = dp[i][j-1] + grid[i][j]` 位于第一行非第一列，只能从左边过来
-
-`dp[i][j] = dp[i-1][j] + grid[i][j]` 位于其他行的第一列，只能从上边下来
-
-`dp[i][j] = max(dp[i-1][j] + grid[i][j], dp[i][j-1] + grid[i][j])`  当不在第一行第一列时
-
-> // 执行用时：8 ms, 在所有 Go 提交中击败了 89.81% 的用户
->            // 内存消耗：3.9 MB, 在所有 Go 提交中击败了 100.00% 的用户
+**dp公式如下(状态转移方程)：**
+1. `dp[i][j] = grid[i][j])` 位于第一行第一列，只能赋值
+2. `dp[i][j] = dp[i][j-1] + grid[i][j]` 位于第一行非第一列，只能从左边过来
+3. `dp[i][j] = dp[i-1][j] + grid[i][j]` 位于其他行的第一列，只能从上边下来
+4. `dp[i][j] = max(dp[i-1][j] + grid[i][j], dp[i][j-1] + grid[i][j])`  当不在第一行第一列时
 
 ```go
 
@@ -63,40 +53,8 @@ func max(a int, b int) int{
 
 ## 【推荐】方法二：状态压缩后的DP
 
-```go
-//状态压缩后的DP
-func maxValue(grid [][]int) int {
+!> 最入门的dp可以使用二维数组来存储结果，这里我们进行状态压缩，使用一维数组来存储结果
 
-	ret := make([]int, len(grid[0]))
-	ret[0] = grid[0][0]
-	//初始化ret
-	for i := 1; i < len(ret); i++ {
-		ret[i] = ret[i-1] + grid[0][i]
-	}
-
-	for i := 1; i < len(grid); i++ {
-		for j := 0; j < len(grid[0]); j++ {
-			if j == 0 {
-				ret[0] += grid[i][j]
-				continue
-			}
-			ret[j] = max(ret[j], ret[j-1]) + grid[i][j]
-		}
-	}
-
-	return ret[len(ret)-1]
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-```
-
-另外一种写法：使用状态压缩之后的dp
-!> **2021-03-27更新**
 ```go
 
 func maxValue(grid [][]int) int {
@@ -139,4 +97,38 @@ func max(a, b int) int {
 	}
 	return b
 }
+```
+
+
+```c++
+class Solution {
+public:
+    int maxValue(vector<vector<int>>& grid) {
+        //如果一维为0或者二维为0直接返回-1
+        if (grid.size() == 0 || grid[0].size() == 0) return -1;
+        
+        //状态压缩
+        vector<int> dp = grid[0];
+
+        //初始化第一行的数据
+        for (int i = 1; i < dp.size(); i++)
+            dp[i] += dp[i-1];
+        
+        //然后开始移动到下面每一行
+        for (int i = 1; i < grid.size(); i++)
+        {
+            for (int j = 0; j < grid[0].size(); j++)
+            {
+
+                if (j == 0)
+                    dp[0] += grid[i][0];
+                else
+                    dp[j] = max(dp[j], dp[j-1]) + grid[i][j];
+            }
+        }
+
+        //返回数组的最后一个值
+        return dp[dp.size()-1];
+    }
+};
 ```

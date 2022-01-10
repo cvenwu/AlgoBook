@@ -4,6 +4,8 @@
 ## 方法
 !> 2022-01-08 辗转相除法
 
+
+
 ```c++
 class Solution {
 public:

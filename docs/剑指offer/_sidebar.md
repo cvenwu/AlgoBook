@@ -1,3 +1,11 @@
+<!--
+ * @Author: yirufeng
+ * @Date: 2020-12-25 19:26:24
+ * @LastEditTime: 2022-01-10 09:53:45
+ * @LastEditors: yirufeng
+ * @Description: 
+ * @FilePath: /AlgoBook/docs/剑指offer/_sidebar.md
+-->
 * [总结书上的笔记](剑指offer/总结.md)
 * [数组中重复的数字](剑指offer/数组中重复的数字/code.md)
 * [二维数组的查找](剑指offer/二维数组的查找/code.md)
