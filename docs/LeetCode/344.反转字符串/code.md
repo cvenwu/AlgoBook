@@ -2,9 +2,6 @@
 
 ## 方法一：直接反转
 
-> 执行用时：36 ms, 在所有 Go 提交中击败了97.98%的用户
-> 		内存消耗：6.3 MB, 在所有 Go 提交中击败了60.28%的用户
-
 ```go
 func reverseString(s []byte)  {
 	for i := 0; i < (len(s) >> 1); i++ {
@@ -13,10 +10,25 @@ func reverseString(s []byte)  {
 }
 ```
 
+
+```cpp
+class Solution {
+
+public:
+    void reverseString(vector<char>& s) {
+        for ( int i = 0; i < s.size()>>1; i++ )
+        {
+            char temp = s[i];
+            s[i] = s[s.size()-1-i];
+            s[s.size()-1-i] = temp;
+        }
+        cout << "this is c++ code...." << endl;
+    }
+};
+```
+
 ## 方法二：使用双指针进行反转
 
-> 执行用时：36 ms, 在所有 Go 提交中击败了97.98%的用户
-> 		内存消耗：6.3 MB, 在所有 Go 提交中击败了60.28%的用户
 
 ```go
 func reverseString(s []byte)  {
@@ -28,3 +40,21 @@ func reverseString(s []byte)  {
 }
 ```
 
+```c++
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int l = 0, r = s.size()-1;
+        char temp;
+        while(l < r)
+        {
+            temp = s[l];
+            s[l] = s[r];
+            s[r] = temp;
+
+            l++;
+            r--;
+        }
+    }
+};
+```

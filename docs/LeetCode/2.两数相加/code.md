@@ -2,12 +2,9 @@
 
 ## 方法一：迭代
 
-思路：首先计算两个链表公共部分的和，然后计算剩余链表与carry的和。
+!> 思路：首先计算两个链表公共部分的和，然后计算剩余链表与carry的和。
 
 **注意：最后可能会两个链表遍历完，但是还有进位，此时我们需要新建一个节点存放进位**
-
-> 执行用时：12 ms, 在所有 Go 提交中击败了73.46%的用户
-> 		内存消耗：5 ms, 在所有 Go 提交中击败了91.50%的用户
 
 ```go
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
@@ -19,64 +16,88 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		return l1
 	}
 
-	dummyNode := &ListNode{} //用来当做返回结果的链表头部
+
+	dummyNode := &ListNode{}
 	head := dummyNode
-	carry := 0 //用来记录进位
-	val := 0   //用来记录当前两节点对应值的和
-
-	//两链表都不空的时候
-	for l1 != nil && l2 != nil {
-		val = l1.Val + l2.Val + carry
-		//注意点1：注意carry写在这里
-		//每次都需要重置进位
-		carry = val / 10
-		//建立当前节点
-		node := &ListNode{
-			Val: val % 10,
+	carry := 0
+	var val int
+	for l1 != nil || l2 != nil {
+		val = 0
+		if l1 != nil {
+			val += l1.Val
+			l1= l1.Next
 		}
-		head.Next = node
-		l1, l2, head = l1.Next, l2.Next, head.Next
+		if l2 != nil {
+			val += l2.Val
+			l2=l2.Next
+		}
+
+		head.Next = &ListNode{
+			Val: (val + carry) % 10,
+		}
+		carry = (val + carry) / 10
+		head = head.Next
 	}
 
-	//以下两个条件只会满足一个
-	//若l1不空
-	for l1 != nil {
-		val = l1.Val + carry
-		//注意点1：注意carry写在这里
-		//每次都需要重置进位
-		carry = val / 10
-		node := &ListNode{Val: val % 10}
-		head.Next = node
-		l1, head = l1.Next, head.Next
-	}
-
-	//若l2不空
-	for l2 != nil {
-		val = l2.Val + carry
-		//注意点1：注意carry写在这里
-		//每次都需要重置进位
-		carry = val / 10
-		node := &ListNode{Val: val % 10}
-		head.Next = node
-		l2, head = l2.Next, head.Next
-	}
-
-	//如果链表都遍历完成，但是最后还是有进位
-	//此时还是要创建一个节点
-	//例如：输入 第1个链表为5  输入第2个链表也是5
 	if carry > 0 {
-		head.Next = &ListNode{Val: carry}
+		head.Next = &ListNode{
+			Val: carry,
+		}
 	}
+
 	return dummyNode.Next
 }
 
 ```
 
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *dummyNode = new ListNode(0);
+        ListNode *cur = dummyNode;
 
+        int val = 0, carry = 0;
+        while(l1 || l2)
+        {
+            val = 0;
+            if (l1)
+            {
+                val += l1->val;
+                l1 = l1->next;
+            }
 
+            if (l2)
+            {
+                val += l2->val;
+                l2 = l2->next;
+            }
 
+            val += carry;
+            carry = val / 10;
+            val = val % 10;
+            cur->next = new ListNode(val);
+            cur = cur->next;
+        }
 
+        //Tips(细节):最后可能多出来1位
+        if (carry != 0)
+            cur->next = new ListNode(carry);
 
+        return dummyNode->next;
+    }
+};
+```
 
 ## 方法二：递归
 
@@ -176,56 +197,3 @@ func addTwoNumbersCore(l1 *ListNode, l2 *ListNode, carry int) *ListNode {
 	}
 }
 ```
-
-
-## 方法三[推荐]：参照LeetCode上的代码进行改进
-
-**改进：直接使用一个while循环就可以进行解决，不用像我们之前那样写那么多复杂的代码**。代码简洁，思路清晰
-
-> 执行用时：12 ms, 在所有 Go 提交中击败了73.45%的用户
-> 		内存消耗：5 ms, 在所有 Go 提交中击败了61.23%的用户
-
-```go
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	if l1 == nil {
-		return l2
-	}
-
-	if l2 == nil {
-		return l1
-	}
-
-
-	dummyNode := &ListNode{}
-	head := dummyNode
-	carry := 0
-	var val int
-	for l1 != nil || l2 != nil {
-		val = 0
-		if l1 != nil {
-			val += l1.Val
-			l1= l1.Next
-		}
-		if l2 != nil {
-			val += l2.Val
-			l2=l2.Next
-		}
-
-		head.Next = &ListNode{
-			Val: (val + carry) % 10,
-		}
-		carry = (val + carry) / 10
-		head = head.Next
-	}
-
-	if carry > 0 {
-		head.Next = &ListNode{
-			Val: carry,
-		}
-	}
-
-	return dummyNode.Next
-}
-
-```
-

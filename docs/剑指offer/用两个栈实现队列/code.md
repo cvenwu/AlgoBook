@@ -94,7 +94,7 @@ func (this *CQueue) DeleteHead() int {
  */
 ```
 
-```c++
+```cpp
 
 class CQueue {
 public:

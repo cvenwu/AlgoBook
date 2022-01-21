@@ -1,3 +1,4 @@
+* [1.两数之和](LeetCode/1.两数之和/code.md)
 * [2.两数相加](LeetCode/2.两数相加/code.md)
 * [3.无重复字符的最长子串](LeetCode/3.无重复字符的最长子串/code.md)
 * [6.Z字形变换](LeetCode/6.Z字形变换/code.md)

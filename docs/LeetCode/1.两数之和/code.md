@@ -1,8 +1,20 @@
+<!--
+ * @Author: yirufeng
+ * @Date: 2021-12-22 20:55:24
+ * @LastEditTime: 2022-01-21 19:42:01
+ * @LastEditors: yirufeng
+ * @Description: 
+ * @FilePath: /AlgoBook/docs/LeetCode/1.两数之和/code.md
+-->
 # [1. 两数之和](https://leetcode-cn.com/problems/two-sum/)
 
 
 ## 方法一：暴力
-```c++
+!> 时间复杂度：O(n^2)
+
+!> 空间复杂度：O(1)
+
+```cpp
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
@@ -23,13 +35,13 @@ public:
 };
 ```
 
-时间复杂度：O(n^2)
-空间复杂度：O(1)
-
-
 ## 方法二：使用hmap
 
-```c++
+!> 时间复杂度：O(n)
+
+!> 空间复杂度：O(n)
+
+```cpp
 class Solution
 {
 public:
@@ -52,6 +64,3 @@ public:
     }
 };
 ```
-
-时间复杂度：O(n)
-空间复杂度：O(n)
