@@ -1,12 +1,12 @@
 <!--
  * @Author: yirufeng
  * @Date: 2021-12-23 15:49:21
- * @LastEditTime: 2021-12-23 15:56:04
+ * @LastEditTime: 2022-01-21 20:09:34
  * @LastEditors: yirufeng
  * @Description: 
  * @FilePath: /AlgoBook/docs/_navbar.md
 -->
 <!-- _navbar.md -->
 
-* [C++](/)
-* [Go](/zh-cn/)
+* [剑指offer](/剑指offer/README)
+* [LeetCode](/LeetCode/README)
