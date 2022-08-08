@@ -7,6 +7,9 @@
  * @FilePath: /AlgoBook/docs/_sidebar.md
 -->
 
+* 刷题
+  * [C++刷题笔记](C++/README.md)
+
 * 算法
   * [剑指offer](剑指offer/README.md)
   * [LeetCode](LeetCode/README.md)
