@@ -8,4 +8,4 @@
 -->
 # AlgoBook
 
-[在线阅读](https://www.sivan.tech/AlgoBook/#/)
+[在线阅读](https://www.sivan.tech/AlgoBook/#/)...
