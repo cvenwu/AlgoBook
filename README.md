@@ -1,11 +1,21 @@
-<!--
- * @Author: yirufeng
- * @Date: 1985-10-26 16:15:00
- * @LastEditTime: 2022-08-20 10:46:23
- * @LastEditors: error: git config user.name && git config user.email & please set dead value or install git
- * @Description: 
- * @FilePath: /undefined/Users/cvenwu/PersonalWorkspace/git_workspace/AlgoBook/README.md
--->
 # AlgoBook
 
 [在线阅读](https://www.sivan.tech/AlgoBook/#/)...
+
+
+
+> clone本项目到本地之后，如果想要查看效果，请参考下文安装环境
+
+## 本项目安装教程
+
+前提：安装了node
+
+1. 进入到克隆后的AlgoBook/docs目录
+
+2. 执行`npm i docsify-cli -g`
+
+3. 执行`docsify serve ./`启动本项目
+
+4. 打开浏览器访问`localhost:3000`即可查看运行效果
+
+   
