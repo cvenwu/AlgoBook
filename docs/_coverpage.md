@@ -6,7 +6,7 @@
 # 刷题笔记
 
 > Golang & C++ 刷题笔记：
-* 涵盖题库：LeetCode、NowCoder面试高频真题、
+* 涵盖题库：LeetCode、NowCoder面试高频真题
 * 涵盖书籍：《剑指offer》《程序员面试金典》《程序员代码面试指南》
 
 [GitHub](https://github.com/sivanWu0222/AlgoBook)
