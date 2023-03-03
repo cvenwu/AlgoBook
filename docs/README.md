@@ -13,7 +13,7 @@
 
 
 
-## 一些刷题大佬
+## 一些可供参考的刷题大佬
 1. [宫水三叶](https://leetcode-cn.com/u/ac_oier/) 微信公众号：宫水三叶的刷题日记
 2. [c++的运算符优先级](https://blog.csdn.net/weixin_41461277/article/details/85094089)
 
