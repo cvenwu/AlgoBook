@@ -1,6 +1,6 @@
 # AlgoBook
 
-[在线阅读...](http://algo.yirufeng.top/#/)
+[在线阅读......](http://algo.yirufeng.top/#/)
 
 
 
